@@ -6,6 +6,7 @@ window.AW = window.AW || {};
 window.AW.strutture = [
   {
     "id": "sextantio-santo-stefano",
+    "categoria": "dormire",
     "nome": "Sextantio Albergo Diffuso",
     "tipo_ricettivo": "albergo_diffuso",
     "comune": "Santo Stefano di Sessanio",
