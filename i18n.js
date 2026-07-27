@@ -57,7 +57,15 @@ const T18 = {
     qz_profile_tag:'Your Abruzzo Profile',
     qz_recommend:'We recommend for you',
     qz_retry:'Try again',
-    qz_plan:'Plan My Trip'
+    qz_plan:'Plan My Trip',
+    qz_cap_title:'Get your itinerary by email',
+    qz_cap_sub:'We will send a tailored Abruzzo itinerary for your profile.',
+    qz_cap_ph:'you@email.com',
+    qz_cap_consent:'Keep me posted with Abruzzo travel ideas (optional)',
+    qz_cap_send:'Send my itinerary',
+    qz_cap_ok:'Thank you! We will send your itinerary shortly.',
+    qz_cap_err:'Something went wrong. Please try again.',
+    qz_cap_privacy:'Privacy notice'
   },
   it: {
     n_home:'Home', n_quiz:'Quiz', n_hiking:'Trekking', n_food:'Cibo & Vino',
@@ -102,7 +110,15 @@ const T18 = {
     qz_profile_tag:'Il tuo profilo Abruzzo',
     qz_recommend:'Ti consigliamo',
     qz_retry:'Riprova',
-    qz_plan:'Pianifica il Viaggio'
+    qz_plan:'Pianifica il Viaggio',
+    qz_cap_title:'Ricevi il tuo itinerario via email',
+    qz_cap_sub:'Ti inviamo un itinerario abruzzese su misura per il tuo profilo.',
+    qz_cap_ph:'tu@email.com',
+    qz_cap_consent:'Tienimi aggiornato con idee di viaggio in Abruzzo (facoltativo)',
+    qz_cap_send:'Invia il mio itinerario',
+    qz_cap_ok:'Grazie! Ti invieremo a breve il tuo itinerario.',
+    qz_cap_err:'Qualcosa è andato storto. Riprova.',
+    qz_cap_privacy:'Informativa privacy'
   },
   de: {
     n_home:'Startseite', n_quiz:'Quiz', n_hiking:'Wandern', n_food:'Essen & Wein',
@@ -147,7 +163,15 @@ const T18 = {
     qz_profile_tag:'Dein Abruzzen-Profil',
     qz_recommend:'Wir empfehlen dir',
     qz_retry:'Nochmal',
-    qz_plan:'Reise planen'
+    qz_plan:'Reise planen',
+    qz_cap_title:'Erhalte deine Reiseroute per E-Mail',
+    qz_cap_sub:'Wir senden dir eine maßgeschneiderte Abruzzen-Route für dein Profil.',
+    qz_cap_ph:'du@email.com',
+    qz_cap_consent:'Haltet mich mit Reiseideen für die Abruzzen auf dem Laufenden (optional)',
+    qz_cap_send:'Reiseroute senden',
+    qz_cap_ok:'Danke! Wir senden dir in Kürze deine Reiseroute.',
+    qz_cap_err:'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
+    qz_cap_privacy:'Datenschutzhinweis'
   },
   fr: {
     n_home:'Accueil', n_quiz:'Quiz', n_hiking:'Randonnée', n_food:'Gastronomie',
@@ -192,7 +216,15 @@ const T18 = {
     qz_profile_tag:'Votre profil Abruzzes',
     qz_recommend:'Nous vous recommandons',
     qz_retry:'Réessayer',
-    qz_plan:'Planifier le Voyage'
+    qz_plan:'Planifier le Voyage',
+    qz_cap_title:'Recevez votre itinéraire par e-mail',
+    qz_cap_sub:'Nous vous enverrons un itinéraire des Abruzzes adapté à votre profil.',
+    qz_cap_ph:'vous@email.com',
+    qz_cap_consent:'Tenez-moi informé des idées de voyage dans les Abruzzes (facultatif)',
+    qz_cap_send:'Envoyer mon itinéraire',
+    qz_cap_ok:'Merci ! Nous vous enverrons bientôt votre itinéraire.',
+    qz_cap_err:'Une erreur est survenue. Veuillez réessayer.',
+    qz_cap_privacy:'Politique de confidentialité'
   }
 };
 

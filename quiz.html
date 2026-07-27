@@ -410,6 +410,60 @@ body { background: var(--ink); }
 }
 .btn-replay:hover { background: var(--rose); color: var(--white); }
 
+/* ════ EMAIL CAPTURE (CDP Fase B — lato DOMANDA/B2C) ════ */
+.result-capture {
+  max-width: 460px;
+  margin: 0 auto 2rem;
+  background: var(--white);
+  border: 1.5px solid var(--line, #e4ebec);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.4rem;
+  text-align: center;
+}
+.result-capture h4 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: .3rem;
+}
+.result-capture > p {
+  font-family: var(--sans);
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.capture-form { display: flex; flex-direction: column; gap: .7rem; }
+.capture-form input[type=email] {
+  font-family: var(--sans);
+  font-size: .9rem;
+  padding: .7rem .9rem;
+  border: 1.5px solid var(--line, #e4ebec);
+  border-radius: 12px;
+  width: 100%;
+}
+.cap-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  font-family: var(--sans);
+  font-size: .76rem;
+  color: var(--muted);
+  text-align: left;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.cap-consent input { margin-top: .15rem; }
+.capture-form .btn-primary { justify-content: center; }
+.capture-form .btn-primary:disabled { opacity: .55; cursor: default; }
+.cap-msg { font-family: var(--sans); font-size: .82rem; margin: .2rem 0 0; }
+.cap-msg.ok  { color: #2e7d32; }
+.cap-msg.err { color: #c0392b; }
+.cap-privacy { font-family: var(--sans); font-size: .72rem; margin-top: .2rem; }
+.cap-privacy a { color: var(--muted); text-decoration: underline; }
+.cf-turnstile { display: flex; justify-content: center; }
+
 @media(max-width:700px){
   .q-side-content h3 { font-size: 1.1rem; }
   .result-cards { grid-template-columns: 1fr; }
@@ -557,6 +611,31 @@ body { background: var(--ink); }
   <div class="result-recs">
     <h3 data-i18n="qz_recommend">We recommend for you</h3>
     <div class="result-cards" id="result-cards"></div>
+
+    <!-- ════ EMAIL CAPTURE — CDP Fase B (lato DOMANDA/B2C) ════ -->
+    <div class="result-capture" id="result-capture">
+      <h4 data-i18n="qz_cap_title">Get your itinerary by email</h4>
+      <p data-i18n="qz_cap_sub">We will send a tailored Abruzzo itinerary for your profile.</p>
+      <form class="capture-form" id="capture-form" onsubmit="return submitCapture(event)">
+        <input type="email" id="cap-email" required autocomplete="email"
+               placeholder="you@email.com" data-i18n-placeholder="qz_cap_ph">
+        <!-- honeypot anti-bot: invisibile, deve restare vuoto -->
+        <input type="text" id="cap-website" name="website" tabindex="-1" autocomplete="off"
+               aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <label class="cap-consent">
+          <input type="checkbox" id="cap-consent">
+          <span data-i18n="qz_cap_consent">Keep me posted with Abruzzo travel ideas (optional)</span>
+        </label>
+        <div class="cf-turnstile" id="cap-turnstile"></div>
+        <button type="submit" class="btn-primary" id="cap-submit">
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <span data-i18n="qz_cap_send">Send my itinerary</span>
+        </button>
+        <p class="cap-msg" id="cap-msg" hidden></p>
+        <p class="cap-privacy"><a href="#" data-i18n="qz_cap_privacy">Privacy notice</a></p>
+      </form>
+    </div>
+
     <div class="result-actions">
       <button class="btn-replay" onclick="resetQuiz()">
         <i class="ti ti-refresh" aria-hidden="true"></i><span data-i18n="qz_retry">Try again</span>
@@ -571,6 +650,8 @@ body { background: var(--ink); }
 
 <script src="i18n.js"></script>
 <script src="data/quiz.js"></script>
+<!-- Cloudflare Turnstile (anti-abuso del capture point CDP) -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 
 <!-- ════ JAVASCRIPT ════ -->
@@ -652,6 +733,60 @@ const profiles = {
 let currentQ  = 0;
 let scores    = { adventure:0, food:0, culture:0, wellness:0, family:0, nature:0 };
 let picking   = false;
+
+/* ══ CAPTURE POINT — CDP Fase B (lato DOMANDA/B2C) ══ */
+/* Backend CDP (Reflex Cloud gira su Fly; il dominio frontend *.reflex.run dà 404 sulle API). */
+const CDP_API             = 'https://73befaa1-08e6-4e6d-9677-205485b02d4b.fly.dev';
+const TURNSTILE_SITEKEY   = '1x00000000000000000000AA';  // TEST key — sostituire con la reale al go-live
+const INFORMATIVA_VERSIONE = 'priv-2026-07';
+let lastProfile = null;    // {mood, scores} dal quiz, inviato col contatto
+let _tsRendered = false;
+
+function renderTurnstile() {
+  if (_tsRendered || !window.turnstile) return;
+  try { window.turnstile.render('#cap-turnstile', { sitekey: TURNSTILE_SITEKEY }); _tsRendered = true; }
+  catch (e) { /* widget già reso o non disponibile */ }
+}
+
+function submitCapture(ev) {
+  ev.preventDefault();
+  const msg  = document.getElementById('cap-msg');
+  const btn  = document.getElementById('cap-submit');
+  const token = (window.turnstile && typeof window.turnstile.getResponse === 'function')
+    ? (window.turnstile.getResponse() || '') : '';
+  const payload = {
+    email: document.getElementById('cap-email').value.trim(),
+    lingua: document.documentElement.lang || 'it',
+    capture_point: 'quiz',
+    profilo: lastProfile || {},
+    consenso_marketing: document.getElementById('cap-consent').checked,
+    versione_informativa: INFORMATIVA_VERSIONE,
+    website: document.getElementById('cap-website').value,   // honeypot
+    turnstile_token: token
+  };
+  btn.disabled = true;
+  fetch(CDP_API + '/api/v1/contatti', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+    .then(r => r.json())
+    .then(res => {
+      if (res && res.ok) {
+        msg.textContent = T('qz_cap_ok'); msg.className = 'cap-msg ok'; msg.hidden = false;
+        document.getElementById('capture-form').reset();
+        if (window.turnstile && _tsRendered) { try { window.turnstile.reset('#cap-turnstile'); } catch (e) {} }
+      } else {
+        msg.textContent = T('qz_cap_err'); msg.className = 'cap-msg err'; msg.hidden = false;
+        btn.disabled = false;
+      }
+    })
+    .catch(() => {
+      msg.textContent = T('qz_cap_err'); msg.className = 'cap-msg err'; msg.hidden = false;
+      btn.disabled = false;
+    });
+  return false;
+}
 
 /* ══ INIT DOTS ══ */
 function buildDots() {
@@ -743,6 +878,14 @@ function showResult() {
   const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
   const p = profiles[winner] || profiles.adventure;
 
+  // profilo da inviare col contatto (capture point CDP)
+  lastProfile = { mood: winner, scores: { ...scores } };
+  // reset stato del form di cattura per un'eventuale nuova compilazione
+  const capMsg = document.getElementById('cap-msg');
+  const capBtn = document.getElementById('cap-submit');
+  if (capMsg) { capMsg.hidden = true; capMsg.textContent = ''; }
+  if (capBtn) { capBtn.disabled = false; }
+
   document.getElementById('result-bg').style.backgroundImage    = `url('${p.img}')`;
   document.getElementById('result-emoji').textContent           = p.emoji;
   document.getElementById('result-title').textContent           = L(p.title);
@@ -759,7 +902,7 @@ function showResult() {
       <p>${L(r.desc)}</p>
     </a>`).join('');
 
-  setTimeout(() => showScreen('result'), 300);
+  setTimeout(() => { showScreen('result'); renderTurnstile(); }, 300);
 }
 
 /* ══ RESET ══ */
