@@ -25,6 +25,7 @@ const T18 = {
     /* footer */
     f_copy:'© 2026 Abruzzo Wild & Authentic — Made for travellers who go off the beaten path',
     f_credits:'Photo credits',
+    n_privacy:'Privacy',
     /* home */
     home_eyebrow:"Central Italy's Best-Kept Secret",
     home_h1:'Where Nature Meets <em>Authentic</em> Italy',
@@ -63,7 +64,7 @@ const T18 = {
     qz_cap_ph:'you@email.com',
     qz_cap_consent:'Keep me posted with Abruzzo travel ideas (optional)',
     qz_cap_send:'Send my itinerary',
-    qz_cap_ok:'Thank you! We will send your itinerary shortly.',
+    qz_cap_ok:'Thank you! We have received your request and will be in touch soon.',
     qz_cap_err:'Something went wrong. Please try again.',
     qz_cap_privacy:'Privacy notice'
   },
@@ -79,6 +80,7 @@ const T18 = {
     nl_ph:'La tua email', nl_btn:'Iscriviti →',
     f_copy:'© 2026 Abruzzo Wild & Authentic — Fatto per chi ama uscire dai sentieri battuti',
     f_credits:'Crediti foto',
+    n_privacy:'Privacy',
     home_eyebrow:"Il Segreto Meglio Custodito d'Italia",
     home_h1:"Dove la Natura incontra l'<em>Italia Autentica</em>",
     home_sub:"Montagne, mare, borghi medievali, cucina selvaggia. L'Abruzzo rimane una delle destinazioni più incontaminate d'Europa.",
@@ -116,7 +118,7 @@ const T18 = {
     qz_cap_ph:'tu@email.com',
     qz_cap_consent:'Tienimi aggiornato con idee di viaggio in Abruzzo (facoltativo)',
     qz_cap_send:'Invia il mio itinerario',
-    qz_cap_ok:'Grazie! Ti invieremo a breve il tuo itinerario.',
+    qz_cap_ok:'Grazie! Abbiamo ricevuto la tua richiesta e ti scriveremo presto.',
     qz_cap_err:'Qualcosa è andato storto. Riprova.',
     qz_cap_privacy:'Informativa privacy'
   },
@@ -132,6 +134,7 @@ const T18 = {
     nl_ph:'Ihre E-Mail-Adresse', nl_btn:'Abonnieren →',
     f_copy:'© 2026 Abruzzo Wild & Authentic — Für Reisende abseits der ausgetretenen Pfade',
     f_credits:'Bildnachweis',
+    n_privacy:'Datenschutz',
     home_eyebrow:"Italiens bestgehütetes Geheimnis",
     home_h1:'Wo die Natur auf <em>authentisches</em> Italien trifft',
     home_sub:'Berge, Meer, mittelalterliche Dörfer, wilde Küche. Abruzzen bleibt eines der unberührtesten Reiseziele Europas.',
@@ -169,7 +172,7 @@ const T18 = {
     qz_cap_ph:'du@email.com',
     qz_cap_consent:'Haltet mich mit Reiseideen für die Abruzzen auf dem Laufenden (optional)',
     qz_cap_send:'Reiseroute senden',
-    qz_cap_ok:'Danke! Wir senden dir in Kürze deine Reiseroute.',
+    qz_cap_ok:'Danke! Wir haben deine Anfrage erhalten und melden uns bald.',
     qz_cap_err:'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
     qz_cap_privacy:'Datenschutzhinweis'
   },
@@ -185,6 +188,7 @@ const T18 = {
     nl_ph:'Votre adresse e-mail', nl_btn:"S'abonner →",
     f_copy:'© 2026 Abruzzo Wild & Authentic — Pour les voyageurs qui sortent des sentiers battus',
     f_credits:'Crédits photos',
+    n_privacy:'Confidentialité',
     home_eyebrow:"Le Secret le Mieux Gardé d'Italie",
     home_h1:"Là où la Nature rencontre l'<em>Italie Authentique</em>",
     home_sub:"Montagnes, mer, villages médiévaux, cuisine sauvage. Les Abruzzes restent l'une des destinations les plus préservées d'Europe.",
@@ -222,7 +226,7 @@ const T18 = {
     qz_cap_ph:'vous@email.com',
     qz_cap_consent:'Tenez-moi informé des idées de voyage dans les Abruzzes (facultatif)',
     qz_cap_send:'Envoyer mon itinéraire',
-    qz_cap_ok:'Merci ! Nous vous enverrons bientôt votre itinéraire.',
+    qz_cap_ok:'Merci ! Nous avons bien reçu votre demande et vous écrirons bientôt.',
     qz_cap_err:'Une erreur est survenue. Veuillez réessayer.',
     qz_cap_privacy:'Politique de confidentialité'
   }

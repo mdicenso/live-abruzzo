@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Privacy Notice | Abruzzo Wild</title>
+<meta name="description" content="How Abruzzo Wild handles the data you share (email, language, quiz result) — purpose, legal basis, retention and your rights.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://mdicenso.github.io/abruzzo-wild/privacy.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/tabler-icons.min.css">
+<link rel="stylesheet" href="shared.css">
+
+<style>
+.priv-wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.2rem 4rem; }
+.priv-wrap h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.8rem,4vw,2.4rem); color: var(--ink); margin-bottom: .4rem; }
+.priv-meta { font-family: var(--sans); font-size: .78rem; color: var(--muted,#6b6b60); margin-bottom: 2rem; }
+.priv-lead { font-family: var(--sans); font-size: .95rem; color: var(--ink); line-height: 1.7; margin-bottom: 2rem; }
+.priv-sec { margin-bottom: 1.6rem; }
+.priv-sec h2 { font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: var(--ink); margin-bottom: .4rem; }
+.priv-sec p { font-family: var(--sans); font-size: .88rem; color: var(--muted,#4b4b44); line-height: 1.65; }
+.priv-sec a { color: var(--olive,#5a6b3b); }
+</style>
+</head>
+<body>
+
+<!-- ════ NAV (5 hub) ════ -->
+<nav class="nav" id="main-nav">
+  <a href="index.html" class="nav-logo">Abruzzo <span>Wild</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">
+      <i class="ti ti-home" aria-hidden="true"></i><span data-i18n="n_home">Home</span></a></li>
+    <li><a href="scopri.html" class="nav-link">
+      <i class="ti ti-compass" aria-hidden="true"></i><span data-i18n="n_scopri">Discover</span></a></li>
+    <li><a href="gusto.html" class="nav-link">
+      <i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><span data-i18n="n_taste">Eat &amp; Drink</span></a></li>
+    <li><a href="dormire.html" class="nav-link">
+      <i class="ti ti-bed" aria-hidden="true"></i><span data-i18n="n_stay">Where to Stay</span></a></li>
+    <li><a href="pianifica.html" class="nav-link cta">
+      <i class="ti ti-route" aria-hidden="true"></i><span data-i18n="n_pianifica">Plan</span></a></li>
+  </ul>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('it')">IT</button>
+    <button class="lang-btn" onclick="setLang('de')">DE</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+
+<main class="priv-wrap">
+  <h1 id="priv-title">Privacy Notice</h1>
+  <div class="priv-meta" id="priv-meta"></div>
+  <p class="priv-lead" id="priv-lead"></p>
+  <div id="priv-body"></div>
+</main>
+
+<!-- ════ FOOTER ════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Abruzzo <span>Wild</span> &amp; Authentic</div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html"       class="footer-link" data-i18n="n_home">Home</a>
+      <a href="scopri.html"      class="footer-link" data-i18n="n_scopri">Discover</a>
+      <a href="gusto.html"       class="footer-link" data-i18n="n_taste">Eat &amp; Drink</a>
+      <a href="dormire.html"     class="footer-link"><span data-i18n="n_stay">Where to Stay</span></a>
+      <a href="pianifica.html"   class="footer-link" data-i18n="n_pianifica">Plan</a>
+      <a href="quiz.html"        class="footer-link" data-i18n="n_quiz">Quiz</a>
+      <a href="privacy.html"     class="footer-link" data-i18n="n_privacy">Privacy</a>
+    </nav>
+  </div>
+  <div class="footer-copy">© 2026 Abruzzo Wild &amp; Authentic — Made for travellers who go off the beaten path</div>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+/* Informativa privacy — contenuto multilingua reso qui (non in i18n.js per non gonfiarlo).
+   Titolare/contatto: DA CONFERMARE con l'utente prima del go-live. */
+const PRIVACY_CONTACT = 'marco.dicenso@gmail.com';
+const PRIVACY = {
+  it: {
+    meta: 'Ultimo aggiornamento: 27 luglio 2026 · versione priv-2026-07',
+    lead: 'Questa informativa spiega come trattiamo i dati che ci lasci volontariamente su Abruzzo Wild (ad esempio compilando il quiz e chiedendo il tuo itinerario via email). Raccogliamo il minimo indispensabile e non vendiamo i tuoi dati.',
+    secs: [
+      ['Titolare del trattamento', 'Abruzzo Wild è un progetto personale gestito da Marco Di Censo. Per qualsiasi richiesta sui tuoi dati puoi scrivere a <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Quali dati raccogliamo', 'Solo ciò che inserisci: il tuo indirizzo email, la lingua del sito e il risultato del quiz (il tuo "profilo" di viaggio). Non raccogliamo dati di pagamento né categorie particolari di dati.'],
+      ['Perché li usiamo', 'Per inviarti l\'itinerario che hai richiesto e, solo se dai il consenso facoltativo, per tenerti aggiornato con idee di viaggio in Abruzzo. Il profilo del quiz serve a rendere i suggerimenti più pertinenti.'],
+      ['Base giuridica', 'L\'invio dell\'itinerario risponde alla tua richiesta esplicita. Gli aggiornamenti marketing si basano sul tuo consenso, che puoi revocare in qualsiasi momento.'],
+      ['Conservazione', 'Conserviamo i tuoi dati finché resti iscritto o finché non chiedi la cancellazione. Su richiesta li eliminiamo.'],
+      ['Strumenti e terze parti', 'Usiamo Cloudflare Turnstile per proteggere il modulo dallo spam. I dati sono archiviati su database Neon (PostgreSQL, UE — Francoforte) e il backend gira su infrastruttura Fly.io. Questi fornitori trattano i dati solo per erogare il servizio; non vendiamo né cediamo i tuoi dati a scopi commerciali.'],
+      ['I tuoi diritti', 'Hai diritto di accedere, rettificare, cancellare i tuoi dati e revocare il consenso. Per esercitarli scrivi a <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+    ],
+  },
+  en: {
+    meta: 'Last updated: 27 July 2026 · version priv-2026-07',
+    lead: 'This notice explains how we handle the data you voluntarily share on Abruzzo Wild (for example, by taking the quiz and requesting your itinerary by email). We collect the minimum necessary and never sell your data.',
+    secs: [
+      ['Data controller', 'Abruzzo Wild is a personal project run by Marco Di Censo. For any request about your data, write to <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['What we collect', 'Only what you enter: your email address, the site language and your quiz result (your travel "profile"). We do not collect payment data or special categories of data.'],
+      ['Why we use it', 'To send you the itinerary you requested and, only if you give optional consent, to keep you posted with Abruzzo travel ideas. The quiz profile helps make suggestions more relevant.'],
+      ['Legal basis', 'Sending the itinerary fulfils your explicit request. Marketing updates rely on your consent, which you can withdraw at any time.'],
+      ['Retention', 'We keep your data while you remain subscribed or until you ask us to delete it. On request, we erase it.'],
+      ['Tools and third parties', 'We use Cloudflare Turnstile to protect the form from spam. Data is stored in a Neon database (PostgreSQL, EU — Frankfurt) and the backend runs on Fly.io infrastructure. These providers process data only to run the service; we do not sell or share your data for commercial purposes.'],
+      ['Your rights', 'You have the right to access, rectify and erase your data and to withdraw consent. To exercise them, write to <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+    ],
+  },
+  de: {
+    meta: 'Zuletzt aktualisiert: 27. Juli 2026 · Version priv-2026-07',
+    lead: 'Dieser Hinweis erklärt, wie wir die Daten verarbeiten, die du freiwillig auf Abruzzo Wild angibst (zum Beispiel beim Quiz und bei der Anforderung deiner Reiseroute per E-Mail). Wir erheben nur das Nötigste und verkaufen deine Daten nicht.',
+    secs: [
+      ['Verantwortlicher', 'Abruzzo Wild ist ein persönliches Projekt von Marco Di Censo. Bei Fragen zu deinen Daten schreibe an <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Welche Daten wir erheben', 'Nur was du eingibst: deine E-Mail-Adresse, die Sprache der Website und dein Quiz-Ergebnis (dein Reise-"Profil"). Wir erheben keine Zahlungsdaten oder besondere Datenkategorien.'],
+      ['Wozu wir sie nutzen', 'Um dir die angeforderte Reiseroute zu senden und, nur mit deiner freiwilligen Einwilligung, um dich mit Reiseideen für die Abruzzen auf dem Laufenden zu halten. Das Quiz-Profil macht die Vorschläge relevanter.'],
+      ['Rechtsgrundlage', 'Der Versand der Reiseroute erfüllt deine ausdrückliche Anfrage. Marketing-Updates beruhen auf deiner Einwilligung, die du jederzeit widerrufen kannst.'],
+      ['Speicherdauer', 'Wir speichern deine Daten, solange du angemeldet bleibst oder bis du die Löschung verlangst. Auf Anfrage löschen wir sie.'],
+      ['Tools und Dritte', 'Wir verwenden Cloudflare Turnstile zum Schutz des Formulars vor Spam. Die Daten werden in einer Neon-Datenbank (PostgreSQL, EU — Frankfurt) gespeichert, das Backend läuft auf Fly.io-Infrastruktur. Diese Anbieter verarbeiten Daten nur zum Betrieb des Dienstes; wir verkaufen oder teilen deine Daten nicht zu kommerziellen Zwecken.'],
+      ['Deine Rechte', 'Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner Daten sowie auf Widerruf der Einwilligung. Schreibe dazu an <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+    ],
+  },
+  fr: {
+    meta: 'Dernière mise à jour : 27 juillet 2026 · version priv-2026-07',
+    lead: 'Cette note explique comment nous traitons les données que vous partagez volontairement sur Abruzzo Wild (par exemple en faisant le quiz et en demandant votre itinéraire par e-mail). Nous collectons le strict nécessaire et ne vendons jamais vos données.',
+    secs: [
+      ['Responsable du traitement', 'Abruzzo Wild est un projet personnel géré par Marco Di Censo. Pour toute demande concernant vos données, écrivez à <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Données collectées', 'Uniquement ce que vous saisissez : votre adresse e-mail, la langue du site et votre résultat au quiz (votre "profil" de voyage). Nous ne collectons pas de données de paiement ni de catégories particulières de données.'],
+      ['Pourquoi nous les utilisons', 'Pour vous envoyer l\'itinéraire demandé et, seulement si vous donnez un consentement facultatif, pour vous tenir informé des idées de voyage dans les Abruzzes. Le profil du quiz rend les suggestions plus pertinentes.'],
+      ['Base légale', 'L\'envoi de l\'itinéraire répond à votre demande explicite. Les actualités marketing reposent sur votre consentement, que vous pouvez retirer à tout moment.'],
+      ['Conservation', 'Nous conservons vos données tant que vous restez inscrit ou jusqu\'à ce que vous demandiez leur suppression. Sur demande, nous les effaçons.'],
+      ['Outils et tiers', 'Nous utilisons Cloudflare Turnstile pour protéger le formulaire du spam. Les données sont stockées dans une base Neon (PostgreSQL, UE — Francfort) et le backend fonctionne sur l\'infrastructure Fly.io. Ces prestataires traitent les données uniquement pour faire fonctionner le service ; nous ne vendons ni ne partageons vos données à des fins commerciales.'],
+      ['Vos droits', 'Vous avez le droit d\'accéder à vos données, de les rectifier, de les effacer et de retirer votre consentement. Pour les exercer, écrivez à <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+    ],
+  },
+};
+
+function renderPrivacy() {
+  const l = document.documentElement.lang || 'en';
+  const d = PRIVACY[l] || PRIVACY.en;
+  document.getElementById('priv-title').textContent = T('n_privacy') || 'Privacy';
+  document.getElementById('priv-meta').textContent = d.meta;
+  document.getElementById('priv-lead').textContent = d.lead;
+  document.getElementById('priv-body').innerHTML = d.secs.map(
+    s => `<section class="priv-sec"><h2>${s[0]}</h2><p>${s[1]}</p></section>`
+  ).join('');
+}
+
+renderPrivacy();
+document.addEventListener('aw:langchange', renderPrivacy);
+</script>
+</body>
+</html>
