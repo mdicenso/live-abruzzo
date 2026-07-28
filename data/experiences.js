@@ -413,3 +413,25 @@ window.AW.placeCoords = {
   "Popoli":           [42.1730, 13.8330],
   "Bartolomeo":       [42.1710, 14.0380]
 };
+
+/* FUNNEL → MARKETPLACE: mappa  itinerario → nome tappa → slug esperienza prenotabile.
+   Solo alcune tappe di un'Esperienza corrispondono a un'esperienza vendibile sul
+   Marketplace (Abruzzo Experience Market); le altre restano di sola scoperta.
+   experience.html, per ogni tappa, cerca expBook[<id itinerario>][<it.name>] e — se
+   presente — mostra un bottone "Prenota" verso  window.AW.marketUrl + '/esperienza?e=' + slug.
+   Chiave doppia (itinerario+tappa) apposta: disambigua la STAGIONE — es. "Terme di
+   Caramanico" rimanda alla ciaspolata+terme SOLO nel tour invernale, non nei tour estivi.
+   I nomi tappa devono combaciare ESATTAMENTE con i `name` del plan qui sopra.
+   FASE 2: ICH potrà rigenerare anche questa mappa insieme al catalogo. */
+window.AW.expBook = {
+  'slow-sagittario':    { 'Gole del Sagittario':'gole-sagittario-raiano', 'Civitella Alfedena':'museo-lupo-barrea', 'Sulmona':'confetti-sulmona' },
+  'wild-gransasso':     { 'Santo Stefano di Sessanio':'sextantio-notte-candela', 'Corno Grande':'corno-grande-guidato' },
+  'taste-villages':     { 'Costa dei Trabocchi':'ebike-costa-trabocchi', 'Santo Stefano di Sessanio':'sextantio-notte-candela', 'Zafferano DOP':'zafferano-navelli', 'Sulmona':'confetti-sulmona' },
+  'family-coast-park':  { 'Costa dei Trabocchi':'ebike-costa-trabocchi', 'Civitella Alfedena':'museo-lupo-barrea', 'Sulmona':'confetti-sulmona' },
+  'roam-adriatic-bike': { 'Costa dei Trabocchi':'ebike-costa-trabocchi' },
+  'winter-thermal':     { 'Terme di Caramanico':'ciaspolata-majella-terme', 'Santo Stefano di Sessanio':'sextantio-notte-candela', 'Sulmona':'confetti-sulmona' },
+  'wild-grand-tour':    { 'Corno Grande':'corno-grande-guidato', 'Santo Stefano di Sessanio':'sextantio-notte-candela', 'Civitella Alfedena':'museo-lupo-barrea', 'Gole del Sagittario':'gole-sagittario-raiano' },
+  'borghi-castles':     { 'Santo Stefano di Sessanio':'sextantio-notte-candela' },
+  'flavours-weekend':   { 'Sulmona':'confetti-sulmona', 'Zafferano DOP · Navelli':'zafferano-navelli' }
+  // 'wild-majella': nessuna tappa prenotabile (trekking puro / terme estive)
+};

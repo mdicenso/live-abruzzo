@@ -22,3 +22,10 @@ window.AW.mapKey = '1d4a9206adde4b8088cd09143242c5e6';
    limitata alle sole due API. Le query partono SOLO a richiesta (l'utente
    clicca) per non consumare il tier gratuito. Se vuota → il blocco non appare. */
 window.AW.placesKey = 'AIzaSyC-GfAK-WakmTZq1jVPDAtH0q5x5D1veZw';
+
+/* URL del MARKETPLACE (Abruzzo Experience Market, app Reflex su Reflex Cloud).
+   È il "Livello 4 / transazione" del funnel: le tappe di un'Esperienza che
+   corrispondono a un'esperienza PRENOTABILE mostrano un bottone "Prenota" che
+   deep-linka a  <marketUrl>/esperienza?e=<slug>  (vedi window.AW.expBook in
+   data/experiences.js per la mappa tappa→slug). Se vuota → nessun bottone. */
+window.AW.marketUrl = 'https://abruzzo-experience-market-cyan-ocean.reflex.run';

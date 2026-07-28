@@ -156,6 +156,20 @@ riserva) con le tappe numerate; poi **un giorno per pagina** (`page-break`), con
 = `renderPrintMap` (`#exp-map-print`) + `renderPrintDays` (`#exp-print-days`); la numerazione
 coincide perché entrambi iterano `ef.plan` nello stesso ordine contando le tappe con coordinate.
 
+**Prenota → Marketplace (funnel).** Le tappe che corrispondono a un'**esperienza prenotabile**
+mostrano un bottone **"Prenota"** che porta all'**Abruzzo Experience Market** (app di
+prenotazione, il "livello transazione" del progetto). Il portale resta **vetrina/scoperta**;
+la transazione avviene sul Marketplace. Meccanica:
+- `window.AW.marketUrl` (in `data/config.js`) = base URL del Marketplace. Se vuota → nessun bottone.
+- `window.AW.expBook` (in `data/experiences.js`) = mappa **itinerario → nome tappa → slug**
+  dell'esperienza. Chiave doppia apposta: **disambigua la stagione** (es. "Terme di Caramanico"
+  rimanda alla ciaspolata+terme solo nel tour invernale, non nei tour estivi). Solo alcune tappe
+  sono prenotabili; le altre restano di sola scoperta. I nomi tappa devono combaciare **esatti**
+  con i `name` del `plan`.
+- Per ogni tappa `experienceHTML` chiama `bookUrl(itinId, name)` → `<marketUrl>/esperienza?e=<slug>`
+  (target `_blank`); il bottone è un **sibling** del link-tappa (niente `<a>` annidati). Chiave
+  i18n `exp_book` (4 lingue). Fase 2: ICH potrà rigenerare anche `expBook` insieme al catalogo.
+
 ---
 
 ## Aggiornare i contenuti

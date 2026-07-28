@@ -130,6 +130,18 @@
 }
 .exp-stop-body h5 { font-family: var(--serif); font-weight: 400; font-size: .95rem; color: var(--ink); margin-bottom: .12rem; }
 .exp-stop-body p { font-size: .75rem; color: var(--muted); line-height: 1.45; font-weight: 300; }
+/* tappa PRENOTABILE: card + bottone "Prenota" (deep-link al Marketplace) */
+.exp-stop-wrap { display: flex; flex-direction: column; }
+.exp-stop-wrap > .exp-stop { flex: 1 1 auto; }
+.exp-book {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  margin-top: .45rem; padding: .5rem .8rem; border-radius: 10px;
+  background: var(--olive); color: #fff; text-decoration: none;
+  font-family: var(--sans); font-size: .74rem; font-weight: 600; letter-spacing: .01em;
+  transition: background .2s, transform .2s;
+}
+.exp-book:hover { background: var(--olive-mid); transform: translateY(-1px); }
+.exp-book i { font-size: 15px; }
 
 /* Alternatives */
 .exp-alts { margin-top: 2.5rem; }
@@ -558,6 +570,7 @@ Object.assign(T18.en, {
   exp_gmaps:'Open the route in Google Maps',
   exp_drive_est:'Estimated driving on this day (approx.)',
   exp_share:'Share', exp_print:'Print / PDF', exp_share_done:'Link copied!',
+  exp_book:'Book the experience',
   gp_title:'Where to eat & sleep along the route', gp_cta:'Show suggestions',
   gp_eat:'Where to eat', gp_stay:'Where to sleep', gp_open:'Open in Google Maps',
   gp_partner:'Partner', gp_partner_open:'Book direct ›',
@@ -580,6 +593,7 @@ Object.assign(T18.it, {
   exp_gmaps:'Apri il percorso in Google Maps',
   exp_drive_est:'Guida stimata in giornata (approssimativa)',
   exp_share:'Condividi', exp_print:'Stampa / PDF', exp_share_done:'Link copiato!',
+  exp_book:'Prenota l\'esperienza',
   gp_title:'Dove mangiare e dormire lungo il percorso', gp_cta:'Mostra i suggerimenti',
   gp_eat:'Dove mangiare', gp_stay:'Dove dormire', gp_open:'Apri in Google Maps',
   gp_partner:'Partner', gp_partner_open:'Prenota diretto ›',
@@ -602,6 +616,7 @@ Object.assign(T18.de, {
   exp_gmaps:'Route in Google Maps öffnen',
   exp_drive_est:'Geschätzte Fahrzeit an diesem Tag (ca.)',
   exp_share:'Teilen', exp_print:'Drucken / PDF', exp_share_done:'Link kopiert!',
+  exp_book:'Erlebnis buchen',
   gp_title:'Essen &amp; Übernachten entlang der Route', gp_cta:'Vorschläge anzeigen',
   gp_eat:'Wo essen', gp_stay:'Wo übernachten', gp_open:'In Google Maps öffnen',
   gp_partner:'Partner', gp_partner_open:'Direkt buchen ›',
@@ -624,6 +639,7 @@ Object.assign(T18.fr, {
   exp_gmaps:'Ouvrir l\'itinéraire dans Google Maps',
   exp_drive_est:'Conduite estimée dans la journée (approx.)',
   exp_share:'Partager', exp_print:'Imprimer / PDF', exp_share_done:'Lien copié !',
+  exp_book:'Réserver l\'expérience',
   gp_title:'Où manger et dormir le long de l\'itinéraire', gp_cta:'Voir les suggestions',
   gp_eat:'Où manger', gp_stay:'Où dormir', gp_open:'Ouvrir dans Google Maps',
   gp_partner:'Partenaire', gp_partner_open:'Réserver en direct ›',
@@ -696,6 +712,16 @@ function currentAlts(mainId) {
 function moodLabel(id) { const m = MOODS.find(x => x.id === id); return m ? L(m.label) : id; }
 
 /* HTML dell'Esperienza (header + timeline giorni) — usato sia dal matcher sia dal clic su un'alternativa */
+/* URL di prenotazione di una tappa sul Marketplace: '' se la tappa non è
+   prenotabile (non in window.AW.expBook) o se manca window.AW.marketUrl. */
+function bookUrl(expId, stopName) {
+  const base = (window.AW && window.AW.marketUrl) || '';
+  const map = (window.AW && window.AW.expBook && window.AW.expBook[expId]) || null;
+  const slug = map ? map[stopName] : '';
+  if (!base || !slug) return '';
+  return base.replace(/\/+$/, '') + '/esperienza?e=' + encodeURIComponent(slug);
+}
+
 function experienceHTML(e) {
   const drive = computeDrive(e);
   const badges = [
@@ -716,15 +742,22 @@ function experienceHTML(e) {
         ${chip}
       </div>
       <div class="exp-stops">
-        ${d.items.map(it => it.added ? addedStopHTML(it, e.id) : `
-          <a class="exp-stop" href="${it.href}">
-            <img class="exp-stop-img" src="${it.img}" alt="${it.name}" loading="lazy">
-            <div class="exp-stop-body">
-              <span class="exp-slot"><i class="ti ${it.icon}" aria-hidden="true"></i> ${T('exp_slot_'+it.slot)}</span>
-              <h5>${it.name}</h5>
-              <p>${L(it.note)}</p>
-            </div>
-          </a>`).join('')}
+        ${d.items.map(it => {
+          if (it.added) return addedStopHTML(it, e.id);
+          const burl = bookUrl(e.id, it.name);
+          return `
+          <div class="exp-stop-wrap">
+            <a class="exp-stop" href="${it.href}">
+              <img class="exp-stop-img" src="${it.img}" alt="${it.name}" loading="lazy">
+              <div class="exp-stop-body">
+                <span class="exp-slot"><i class="ti ${it.icon}" aria-hidden="true"></i> ${T('exp_slot_'+it.slot)}</span>
+                <h5>${it.name}</h5>
+                <p>${L(it.note)}</p>
+              </div>
+            </a>
+            ${burl ? `<a class="exp-book" href="${burl}" target="_blank" rel="noopener"><i class="ti ti-ticket" aria-hidden="true"></i> ${T('exp_book')}</a>` : ''}
+          </div>`;
+        }).join('')}
       </div>
     </div>`;
   }).join('');
