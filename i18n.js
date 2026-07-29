@@ -65,7 +65,7 @@ const T18 = {
     qz_cap_consent:'Keep me posted with Abruzzo travel ideas (optional)',
     qz_cap_send:'Send my itinerary',
     qz_cap_sending:'Sending your itinerary…',
-    qz_cap_ok:'Thank you! We have received your request and will be in touch soon.',
+    qz_cap_ok:'Thank you! Your itinerary is on its way — check your inbox (and the spam folder).',
     qz_cap_err:'Something went wrong. Please try again.',
     qz_cap_privacy:'Privacy notice'
   },
@@ -120,7 +120,7 @@ const T18 = {
     qz_cap_consent:'Tienimi aggiornato con idee di viaggio in Abruzzo (facoltativo)',
     qz_cap_send:'Invia il mio itinerario',
     qz_cap_sending:'Invio in corso…',
-    qz_cap_ok:'Grazie! Abbiamo ricevuto la tua richiesta e ti scriveremo presto.',
+    qz_cap_ok:'Grazie! Ti abbiamo inviato il tuo itinerario — controlla la posta (anche lo spam).',
     qz_cap_err:'Qualcosa è andato storto. Riprova.',
     qz_cap_privacy:'Informativa privacy'
   },
@@ -175,7 +175,7 @@ const T18 = {
     qz_cap_consent:'Haltet mich mit Reiseideen für die Abruzzen auf dem Laufenden (optional)',
     qz_cap_send:'Reiseroute senden',
     qz_cap_sending:'Wird gesendet…',
-    qz_cap_ok:'Danke! Wir haben deine Anfrage erhalten und melden uns bald.',
+    qz_cap_ok:'Danke! Wir haben dir deine Reiseroute geschickt — prüfe dein Postfach (auch den Spam-Ordner).',
     qz_cap_err:'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
     qz_cap_privacy:'Datenschutzhinweis'
   },
@@ -230,7 +230,7 @@ const T18 = {
     qz_cap_consent:'Tenez-moi informé des idées de voyage dans les Abruzzes (facultatif)',
     qz_cap_send:'Envoyer mon itinéraire',
     qz_cap_sending:'Envoi en cours…',
-    qz_cap_ok:'Merci ! Nous avons bien reçu votre demande et vous écrirons bientôt.',
+    qz_cap_ok:'Merci ! Nous vous avons envoyé votre itinéraire — vérifiez votre boîte mail (et les spams).',
     qz_cap_err:'Une erreur est survenue. Veuillez réessayer.',
     qz_cap_privacy:'Politique de confidentialité'
   }
