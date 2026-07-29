@@ -47,6 +47,7 @@ const T18 = {
     why3:"The A24 connects Rome to L'Aquila in under 90 minutes. Yet it feels worlds away.",
     why4:"Half the price of Tuscany. Agriturismo from €50/night with home-cooked dinner.",
     stat_trails:'km of trails', stat_parks:'National Parks', stat_rome:'from Rome',
+    hh2_peak:'Highest Apennine peak',
     scroll:'Scroll',
     /* quiz (fase A2) */
     qz_badge:'5 questions · discover your Abruzzo',
@@ -102,6 +103,7 @@ const T18 = {
     why3:"L'A24 collega Roma all'Aquila in meno di 90 minuti. Eppure sembra un altro mondo.",
     why4:"La metà dei prezzi della Toscana. Agriturismo da €50/notte con cena casalinga.",
     stat_trails:'km di sentieri', stat_parks:'Parchi Nazionali', stat_rome:'da Roma',
+    hh2_peak:'Vetta più alta degli Appennini',
     scroll:'Scorri',
     /* quiz (fase A2) */
     qz_badge:'5 domande · scopri il tuo Abruzzo',
@@ -157,6 +159,7 @@ const T18 = {
     why3:"Die A24 verbindet Rom in unter 90 Minuten mit L'Aquila. Und fühlt sich wie eine andere Welt an.",
     why4:'Halb so teuer wie die Toskana. Agriturismo ab €50/Nacht mit Hausmannskost.',
     stat_trails:'km Wanderwege', stat_parks:'Nationalparks', stat_rome:'von Rom',
+    hh2_peak:'Höchster Gipfel der Apenninen',
     scroll:'Scrollen',
     /* quiz (fase A2) */
     qz_badge:'5 Fragen · entdecke deine Abruzzen',
@@ -212,6 +215,7 @@ const T18 = {
     why3:"L'A24 relie Rome à L'Aquila en moins de 90 minutes. Et pourtant, c'est un autre monde.",
     why4:"Moitié moins cher que la Toscane. Agriturismo à partir de €50/nuit avec dîner maison.",
     stat_trails:'km de sentiers', stat_parks:'Parcs Nationaux', stat_rome:'de Rome',
+    hh2_peak:'Plus haut sommet des Apennins',
     scroll:'Défiler',
     /* quiz (fase A2) */
     qz_badge:'5 questions · découvrez vos Abruzzes',

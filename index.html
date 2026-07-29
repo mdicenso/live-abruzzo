@@ -30,13 +30,15 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@1,600&family=Sacramento&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/tabler-icons.min.css">
 
 <!-- Shared design system -->
 <link rel="stylesheet" href="shared.css">
+<!-- Hero (template regionale) -->
+<link rel="stylesheet" href="hero.css">
 
 <style>
 /* ── Index-specific styles ── */
@@ -136,7 +138,13 @@
      NAVIGATION
 ════════════════════════════════════ -->
 <nav class="nav" id="main-nav">
-  <a href="index.html" class="nav-logo">Abruzzo <span>Wild</span></a>
+  <a href="index.html" class="nav-logo brandmark07" aria-label="Abruzzo Wild & Authentic">
+    <svg class="paw" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 37c-9 0-15 6-15 12 0 5 5 8 15 8s15-3 15-8c0-6-6-12-15-12z"/><ellipse cx="15" cy="29" rx="5" ry="7"/><ellipse cx="26" cy="21" rx="5" ry="7.5"/><ellipse cx="38" cy="21" rx="5" ry="7.5"/><ellipse cx="49" cy="29" rx="5" ry="7"/></svg>
+    <span class="stack">
+      <span class="row top"><span class="abr">Abruzzo</span></span>
+      <span class="row bot"><span class="wild">Wild</span><span class="auth">&amp; Authentic</span></span>
+    </span>
+  </a>
 
   <ul class="nav-links">
     <li><a href="index.html" class="nav-link active">
@@ -163,15 +171,24 @@
 <!-- ════════════════════════════════════
      HERO — Full screen
 ════════════════════════════════════ -->
-<div class="hero-home">
-  <div class="hero-home-img" style="background-image:url('img/corno-grande-gran-sasso.jpg')"></div>
-  <div class="hero-home-veil"></div>
+<div class="hh2">
+  <div class="hh2-img" style="background-image:url('img/corno-grande-gran-sasso.jpg')"></div>
+  <div class="hh2-veil"></div>
 
-  <div class="hero-home-content">
-    <div class="hero-eyebrow" data-i18n="home_eyebrow">Central Italy's Best-Kept Secret</div>
-    <h1 class="hero-home-h1" data-i18n="home_h1">Where Nature Meets <em>Authentic</em> Italy</h1>
-    <p class="hero-home-sub" data-i18n="home_sub">Mountains, sea, medieval villages, wild cuisine. Abruzzo remains one of Europe's most unspoiled destinations.</p>
-    <div class="hero-ctas">
+  <!-- parola sfumata (firma) — per Marche/Molise cambiare SOLO questa parola -->
+  <div class="hh2-ghost" aria-hidden="true">Abruzzo</div>
+
+  <div class="hh2-rail" aria-hidden="true">
+    <i></i>
+    <span>42°28′N · 13°34′E — Gran Sasso</span>
+    <i></i>
+  </div>
+
+  <div class="hh2-content">
+    <div class="hh2-tag"><b></b><span data-i18n="home_eyebrow">Central Italy's Best-Kept Secret</span></div>
+    <h1 class="hh2-h1" data-i18n="home_h1">Where Nature Meets <em>Authentic</em> Italy</h1>
+    <p class="hh2-sub" data-i18n="home_sub">Mountains, sea, medieval villages, wild cuisine. Abruzzo remains one of Europe's most unspoiled destinations.</p>
+    <div class="hh2-ctas">
       <a href="quiz.html" class="btn-primary">
         <i class="ti ti-sparkles" aria-hidden="true"></i>
         <span data-i18n="home_cta1">Take the Quiz</span>
@@ -180,24 +197,16 @@
     </div>
   </div>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <strong>3,000+</strong>
-      <span data-i18n="stat_trails">km of trails</span>
-    </div>
-    <div class="hero-stat">
-      <strong>3</strong>
-      <span data-i18n="stat_parks">National Parks</span>
-    </div>
-    <div class="hero-stat">
-      <strong>2h</strong>
-      <span data-i18n="stat_rome">from Rome</span>
-    </div>
+  <div class="hh2-scroll" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">
+    <i></i>
+    <span data-i18n="scroll">Scroll</span>
   </div>
 
-  <div class="hero-scroll" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">
-    <div class="hero-scroll-line"></div>
-    <span data-i18n="scroll">Scroll</span>
+  <div class="hh2-ribbon">
+    <div class="hh2-datum"><strong>2 912<span>m</span></strong><em data-i18n="hh2_peak">Highest Apennine peak</em></div>
+    <div class="hh2-datum"><strong>3</strong><em data-i18n="stat_parks">National Parks</em></div>
+    <div class="hh2-datum"><strong>3 000<span>+</span></strong><em data-i18n="stat_trails">km of trails</em></div>
+    <div class="hh2-datum"><strong>2<span>h</span></strong><em data-i18n="stat_rome">from Rome</em></div>
   </div>
 </div>
 
