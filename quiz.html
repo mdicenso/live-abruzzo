@@ -463,6 +463,11 @@ body { background: var(--ink); }
 .cap-privacy { font-family: var(--sans); font-size: .72rem; margin-top: .2rem; }
 .cap-privacy a { color: var(--muted); text-decoration: underline; }
 .cf-turnstile { display: flex; justify-content: center; }
+.spin { display:inline-block; width:15px; height:15px; margin-right:8px; vertical-align:-2px;
+  border:2px solid rgba(255,255,255,.45); border-top-color:#fff; border-radius:50%;
+  animation:capspin .7s linear infinite; }
+@keyframes capspin { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion:reduce){ .spin{ animation-duration:1.6s; } }
 
 @media(max-width:700px){
   .q-side-content h3 { font-size: 1.1rem; }
@@ -764,7 +769,12 @@ function submitCapture(ev) {
     website: document.getElementById('cap-website').value,   // honeypot
     turnstile_token: token
   };
+  // stato "invio in corso": spinner nel bottone + messaggio (la POST invia anche l'email → qualche secondo)
+  const btnHTML = btn.innerHTML;
+  const restore = () => { btn.disabled = false; btn.innerHTML = btnHTML; };
   btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>' + T('qz_cap_sending');
+  msg.textContent = T('qz_cap_sending'); msg.className = 'cap-msg'; msg.hidden = false;
   fetch(CDP_API + '/api/v1/contatti', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -778,12 +788,12 @@ function submitCapture(ev) {
         if (window.turnstile && _tsRendered) { try { window.turnstile.reset('#cap-turnstile'); } catch (e) {} }
       } else {
         msg.textContent = T('qz_cap_err'); msg.className = 'cap-msg err'; msg.hidden = false;
-        btn.disabled = false;
       }
+      restore();
     })
     .catch(() => {
       msg.textContent = T('qz_cap_err'); msg.className = 'cap-msg err'; msg.hidden = false;
-      btn.disabled = false;
+      restore();
     });
   return false;
 }
