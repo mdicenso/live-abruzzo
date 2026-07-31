@@ -359,6 +359,15 @@ ul {
 .nav-link.cta::after { display: none; }
 
 /* Language switcher */
+/* Azioni nav: Bottega (CTA) + Accedi, accanto alle lingue */
+.nav-actions{display:flex;align-items:center;gap:.5rem;margin-right:.15rem;}
+.nav-bottega{display:inline-flex;align-items:center;gap:.4rem;background:var(--rose);color:#fff;font-family:var(--sans);font-weight:500;font-size:.82rem;padding:.42rem .95rem;border-radius:999px;text-decoration:none;white-space:nowrap;transition:var(--transition);}
+.nav-bottega:hover{background:#9f5f4b;transform:translateY(-1px);}
+.nav-login{display:inline-flex;align-items:center;gap:.35rem;color:#fff;font-family:var(--sans);font-weight:500;font-size:.82rem;padding:.42rem .8rem;border-radius:999px;text-decoration:none;border:1px solid rgba(255,255,255,.3);white-space:nowrap;transition:var(--transition);}
+.nav-login:hover{background:rgba(255,255,255,.12);}
+.nav-actions i{font-size:1rem;}
+@media (max-width:600px){ .nav-login span{display:none;} }
+
 .nav-lang {
   display: flex;
   gap: .2rem;
