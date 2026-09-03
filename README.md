@@ -3,7 +3,7 @@
 Portale turistico **statico** (HTML/CSS/JS) dedicato all'Abruzzo — natura selvaggia, borghi
 medievali, cucina autentica, terme. Nessun backend: tutto gira lato client.
 
-- **Sito live:** <https://mdicenso.github.io/abruzzo-wild/>
+- **Sito live:** <https://liveabruzzo.com/>
 - **Hosting:** GitHub Pages (branch `main`, root) — repo `mdicenso/abruzzo-wild`
 - **Lingue:** 4 — Inglese (default), Italiano, Tedesco, Francese
 
