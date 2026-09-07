@@ -28,4 +28,4 @@ window.AW.placesKey = 'AIzaSyC-GfAK-WakmTZq1jVPDAtH0q5x5D1veZw';
    corrispondono a un'esperienza PRENOTABILE mostrano un bottone "Prenota" che
    deep-linka a  <marketUrl>/esperienza?e=<slug>  (vedi window.AW.expBook in
    data/experiences.js per la mappa tappa→slug). Se vuota → nessun bottone. */
-window.AW.marketUrl = 'https://abruzzo-experience-market-cyan-ocean.reflex.run';
+window.AW.marketUrl = 'https://bottega.liveabruzzo.com';
