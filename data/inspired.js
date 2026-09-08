@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: INSPIRED
+/* Live Abruzzo - data module: INSPIRED
    Content array for inspired.html. Single source of truth,
    loaded via <script src="data/inspired.js"> before the page script.
    Multilingua {en,it,de,fr} su label/tagline/desc e sui "detail" testuali

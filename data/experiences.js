@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: EXPERIENCES (Experience Engine)
+/* Live Abruzzo - data module: EXPERIENCES (Experience Engine)
    Catalogo di "Esperienze" curate = viaggi giorno-per-giorno con tappe che
    puntano ai dati reali del portale (borghi/sentieri/cibo/terme...).
    FASE 1 (ibrido): questo catalogo è servito staticamente; un matcher client-side

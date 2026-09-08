@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: QUIZ
+/* Live Abruzzo - data module: QUIZ
    Content arrays extracted from quiz.html (verbatim). Single source of truth,
    loaded via <script src="data/quiz.js"> before the page script.
    Future: fed/refreshed by the ICH engine. */

@@ -1,5 +1,5 @@
 /* ============================================================================
-   Abruzzo Wild & Authentic — motore multilingua CONDIVISO (i18n).
+   Live Abruzzo — motore multilingua CONDIVISO (i18n).
    Un solo dizionario per tutte le pagine (prima era duplicato inline nella home).
    Uso: <script src="i18n.js"></script> in ogni pagina, PRIMA dello script di pagina.
      - marcare gli elementi traducibili con  data-i18n="chiave"  (usa innerHTML)
@@ -23,7 +23,7 @@ const T18 = {
     nl_sub:'Events, trails and hidden gems — once a month, no spam.',
     nl_ph:'Your email address', nl_btn:'Subscribe →',
     /* footer */
-    f_copy:'© 2026 Abruzzo Wild & Authentic — Made for travellers who go off the beaten path',
+    f_copy:'© 2026 Live Abruzzo — Made for travellers who go off the beaten path',
     f_credits:'Photo credits',
     n_privacy:'Privacy',
     /* home */
@@ -80,7 +80,7 @@ const T18 = {
     nl_title:"L'Abruzzo nella tua casella",
     nl_sub:'Eventi, sentieri e luoghi nascosti — una volta al mese, niente spam.',
     nl_ph:'La tua email', nl_btn:'Iscriviti →',
-    f_copy:'© 2026 Abruzzo Wild & Authentic — Fatto per chi ama uscire dai sentieri battuti',
+    f_copy:'© 2026 Live Abruzzo — Fatto per chi ama uscire dai sentieri battuti',
     f_credits:'Crediti foto',
     n_privacy:'Privacy',
     home_eyebrow:"Il Segreto Meglio Custodito d'Italia",
@@ -136,7 +136,7 @@ const T18 = {
     nl_title:'Abruzzen in Ihrem Posteingang',
     nl_sub:'Events, Wanderwege und Geheimtipps — einmal im Monat, kein Spam.',
     nl_ph:'Ihre E-Mail-Adresse', nl_btn:'Abonnieren →',
-    f_copy:'© 2026 Abruzzo Wild & Authentic — Für Reisende abseits der ausgetretenen Pfade',
+    f_copy:'© 2026 Live Abruzzo — Für Reisende abseits der ausgetretenen Pfade',
     f_credits:'Bildnachweis',
     n_privacy:'Datenschutz',
     home_eyebrow:"Italiens bestgehütetes Geheimnis",
@@ -192,7 +192,7 @@ const T18 = {
     nl_title:'Les Abruzzes dans votre boîte mail',
     nl_sub:'Événements, sentiers et trésors cachés — une fois par mois, sans spam.',
     nl_ph:'Votre adresse e-mail', nl_btn:"S'abonner →",
-    f_copy:'© 2026 Abruzzo Wild & Authentic — Pour les voyageurs qui sortent des sentiers battus',
+    f_copy:'© 2026 Live Abruzzo — Pour les voyageurs qui sortent des sentiers battus',
     f_credits:'Crédits photos',
     n_privacy:'Confidentialité',
     home_eyebrow:"Le Secret le Mieux Gardé d'Italie",

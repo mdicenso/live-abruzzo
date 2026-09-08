@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: ATTRACTIONS
+/* Live Abruzzo - data module: ATTRACTIONS
    Extracted from attractions.html (verbatim). SL = stat labels, kept private
    in an IIFE since the array references them at definition time.
    Future: fed/refreshed by the ICH engine. */

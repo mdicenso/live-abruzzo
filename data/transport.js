@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: TRANSPORT
+/* Live Abruzzo - data module: TRANSPORT
    Content arrays extracted from transport.html (verbatim). Single source of truth,
    loaded via <script src="data/transport.js"> before the page script.
    Future: fed/refreshed by the ICH engine. */

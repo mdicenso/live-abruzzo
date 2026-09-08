@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: EVENTS
+/* Live Abruzzo - data module: EVENTS
    Content arrays extracted from events.html (verbatim). Single source of truth,
    loaded via <script src="data/events.js"> before the page script.
    Future: fed/refreshed by the ICH engine. */

@@ -1,4 +1,4 @@
-# Abruzzo Wild & Authentic
+# Live Abruzzo
 
 Portale turistico **statico** (HTML/CSS/JS) dedicato all'Abruzzo — natura selvaggia, borghi
 medievali, cucina autentica, terme. Nessun backend: tutto gira lato client.

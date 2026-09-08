@@ -2351,6 +2351,7 @@ ul {
 .brandmark07 .stack{display:inline-flex;flex-direction:column;align-items:stretch;}
 .brandmark07 .row{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;line-height:1;}
 .brandmark07 .abr{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:1.5rem;line-height:1;color:#fff;}
+.brandmark07 .live{font-size:1.35rem;}  /* 'Live' piu' piccolo di 'Abruzzo': il nome si legge come un'unita', con l'accento sul luogo */
 .brandmark07 .bot{margin-top:.04rem;}
 .brandmark07 .wild{font-family:'Script MT Bold','Sacramento',cursive;font-weight:400;font-size:1.35rem;line-height:.7;color:var(--rose-light);}
 .brandmark07 .auth{font-family:var(--sans);font-weight:500;font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.72);align-self:center;}

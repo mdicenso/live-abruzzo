@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic — configurazione portale.
+/* Live Abruzzo — configurazione portale.
    ────────────────────────────────────────────────────────────────────────
    CHIAVE MAPPA (Geoapify) per la mappa-strade nella STAMPA dell'Esperienza.
    È una chiave client (finisce nel codice pubblico): va RISTRETTA al dominio

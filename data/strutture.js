@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic — data module: STRUTTURE (operatori ricettivi)
+/* Live Abruzzo — data module: STRUTTURE (operatori ricettivi)
    GENERATO AUTOMATICAMENTE dalla Customer DATAi Platform (CDP) — NON modificare a mano.
    Sorgente: CRM strutture (contratto strutture.v1), solo record pubblicato=true.
    Caricato via <script src="data/strutture.js"> prima dello script di pagina. */

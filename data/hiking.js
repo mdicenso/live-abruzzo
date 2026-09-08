@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: HIKING
+/* Live Abruzzo - data module: HIKING
    Content arrays extracted from hiking.html (verbatim). Single source of truth,
    loaded via <script src="data/hiking.js"> before the page script.
    Future: fed/refreshed by the ICH engine. */

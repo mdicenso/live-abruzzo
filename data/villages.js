@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic — data module: VILLAGES (borghi)
+/* Live Abruzzo — data module: VILLAGES (borghi)
    Single source of truth for the medieval villages dataset.
    Loaded via <script src="data/villages.js"> before the page script.
    Schema: {id, name, prov, provLabel, alt, pop, img, bbest,

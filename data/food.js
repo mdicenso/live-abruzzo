@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: FOOD
+/* Live Abruzzo - data module: FOOD
    Content arrays extracted from food.html (verbatim). Single source of truth,
    loaded via <script src="data/food.js"> before the page script.
    Future: fed/refreshed by the ICH engine. */

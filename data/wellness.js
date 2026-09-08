@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: WELLNESS
+/* Live Abruzzo - data module: WELLNESS
    Content arrays extracted from wellness.html (verbatim). Single source of truth,
    loaded via <script src="data/wellness.js"> before the page script.
    Future: fed/refreshed by the ICH engine. */

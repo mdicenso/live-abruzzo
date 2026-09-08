@@ -1,4 +1,4 @@
-/* Abruzzo Wild & Authentic - data module: PLAN
+/* Live Abruzzo - data module: PLAN
    Content arrays extracted from plan.html (verbatim). Single source of truth,
    loaded via <script src="data/plan.js"> before the page script.
    Future: fed/refreshed by the ICH engine. */
