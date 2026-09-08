@@ -744,8 +744,10 @@ let scores    = { adventure:0, food:0, culture:0, wellness:0, family:0, nature:0
 let picking   = false;
 
 /* ══ CAPTURE POINT — CDP Fase B (lato DOMANDA/B2C) ══ */
-/* Backend CDP (Reflex Cloud gira su Fly; il dominio frontend *.reflex.run dà 404 sulle API). */
-const CDP_API             = 'https://73befaa1-08e6-4e6d-9677-205485b02d4b.fly.dev';
+/* Backend CDP via api.liveabruzzo.com (Worker Cloudflare -> backend Fly).
+   Prima qui c'era l'indirizzo fly.dev, che contiene l'IDENTIFICATIVO dell'app: se
+   quell'app venisse ricreata, questo quiz smetterebbe di inviare. */
+const CDP_API             = 'https://api.liveabruzzo.com';
 const TURNSTILE_SITEKEY   = '0x4AAAAAAD_Imvy2ydLyTGRX';  // Cloudflare Turnstile (widget Live Abruzzo quiz)
 const INFORMATIVA_VERSIONE = 'priv-2026-07';
 let lastProfile = null;    // {mood, scores} dal quiz, inviato col contatto
