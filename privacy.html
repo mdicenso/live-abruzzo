@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Privacy Notice | Live Abruzzo</title>
-<meta name="description" content="How Live Abruzzo handles the data you share (email, language, quiz result) — purpose, legal basis, retention and your rights.">
+<meta name="description" content="How Live Abruzzo and the Bottega handle the data you share (email, name, language, quiz result, IP) — purpose, legal basis, retention and your rights.">
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://liveabruzzo.com/privacy.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -82,59 +82,61 @@
 <script src="i18n.js"></script>
 <script>
 /* Informativa privacy — contenuto multilingua reso qui (non in i18n.js per non gonfiarlo).
-   Titolare/contatto: DA CONFERMARE con l'utente prima del go-live. */
+   Titolare: persona fisica (Marco Di Censo). Alla costituzione della società la titolarità
+   passa a quest'ultima: serve una NUOVA versione di questa informativa + il passaggio dei
+   dati già raccolti. Vedi fase 0 in ecosistema/. */
 const PRIVACY_CONTACT = 'marco.dicenso@gmail.com';
 const PRIVACY = {
   it: {
-    meta: 'Ultimo aggiornamento: 27 luglio 2026 · versione priv-2026-07',
-    lead: 'Questa informativa spiega come trattiamo i dati che ci lasci volontariamente su Live Abruzzo (ad esempio compilando il quiz e chiedendo il tuo itinerario via email). Raccogliamo il minimo indispensabile e non vendiamo i tuoi dati.',
+    meta: 'Ultimo aggiornamento: 10 settembre 2026 · versione priv-2026-09',
+    lead: 'Questa informativa spiega come trattiamo i dati che ci lasci volontariamente su Live Abruzzo e sulla Bottega (ad esempio compilando il quiz e chiedendo il tuo itinerario via email, oppure acquistando un\'esperienza). Raccogliamo il minimo indispensabile e non vendiamo i tuoi dati.',
     secs: [
-      ['Titolare del trattamento', 'Live Abruzzo è un progetto personale gestito da Marco Di Censo. Per qualsiasi richiesta sui tuoi dati puoi scrivere a <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
-      ['Quali dati raccogliamo', 'Solo ciò che inserisci: il tuo indirizzo email, la lingua del sito e il risultato del quiz (il tuo "profilo" di viaggio). Non raccogliamo dati di pagamento né categorie particolari di dati.'],
-      ['Perché li usiamo', 'Per inviarti l\'itinerario che hai richiesto e, solo se dai il consenso facoltativo, per tenerti aggiornato con idee di viaggio in Abruzzo. Il profilo del quiz serve a rendere i suggerimenti più pertinenti.'],
-      ['Base giuridica', 'L\'invio dell\'itinerario risponde alla tua richiesta esplicita. Gli aggiornamenti marketing si basano sul tuo consenso, che puoi revocare in qualsiasi momento.'],
-      ['Conservazione', 'Conserviamo i tuoi dati finché resti iscritto o finché non chiedi la cancellazione. Su richiesta li eliminiamo.'],
-      ['Strumenti e terze parti', 'Usiamo Cloudflare Turnstile per proteggere il modulo dallo spam. I dati sono archiviati su database Neon (PostgreSQL, UE — Francoforte) e il backend gira su infrastruttura Fly.io. Questi fornitori trattano i dati solo per erogare il servizio; non vendiamo né cediamo i tuoi dati a scopi commerciali.'],
-      ['I tuoi diritti', 'Hai diritto di accedere, rettificare, cancellare i tuoi dati e revocare il consenso. Per esercitarli scrivi a <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Titolare del trattamento', 'Live Abruzzo e la Bottega sono un progetto personale gestito da Marco Di Censo, che ne è il titolare del trattamento. Questa informativa vale per entrambi i siti. Per qualsiasi richiesta sui tuoi dati puoi scrivere a <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Quali dati raccogliamo', 'Ciò che inserisci: il tuo indirizzo email, il tuo nome, la lingua del sito e il risultato del quiz (il tuo "profilo" di viaggio). Se usi la tua area personale, anche i recapiti che scegli di aggiungere (telefono, indirizzo, città, paese) e le esperienze o strutture che salvi tra i preferiti. Se ti registri, conserviamo le credenziali del tuo account in forma cifrata. Registriamo inoltre il tuo indirizzo IP, per il tempo necessario a proteggere i moduli dagli abusi. Non raccogliamo dati di pagamento né categorie particolari di dati.'],
+      ['Perché li usiamo', 'Per inviarti l\'itinerario che hai richiesto, per dare seguito ai tuoi acquisti sulla Bottega e, solo se dai il consenso facoltativo, per tenerti aggiornato con idee di viaggio in Abruzzo. Il profilo del quiz serve a rendere i suggerimenti più pertinenti.'],
+      ['Base giuridica', 'L\'invio dell\'itinerario e la gestione di un acquisto rispondono a una tua richiesta esplicita. Gli aggiornamenti marketing si basano sul tuo consenso, che puoi revocare in qualsiasi momento. La protezione dei moduli dagli abusi risponde al nostro legittimo interesse a mantenere il servizio funzionante.'],
+      ['Conservazione', 'Conserviamo i tuoi dati finché resti iscritto e comunque non oltre 24 mesi dall\'ultima interazione, dopodiché li cancelliamo. Puoi chiederne la cancellazione in qualsiasi momento: la eseguiamo entro 30 giorni e te ne diamo conferma.'],
+      ['Strumenti e terze parti', 'Cloudflare protegge i moduli dallo spam (Turnstile) e instrada le richieste verso il nostro backend. I dati sono archiviati su database Neon (PostgreSQL) e il backend gira su Fly.io, entrambi su infrastruttura nell\'Unione Europea (Francoforte, Germania). Le email che ti inviamo partono tramite Google (Gmail). Questi fornitori trattano i dati solo per erogare il servizio; alcuni hanno sede negli Stati Uniti e i relativi trasferimenti avvengono sulla base delle garanzie previste dalla normativa europea. Non vendiamo né cediamo i tuoi dati a scopi commerciali.'],
+      ['I tuoi diritti', 'Hai diritto di accedere ai tuoi dati, rettificarli, cancellarli, limitarne il trattamento, riceverli in un formato portabile e revocare il consenso. Per esercitarli scrivi a <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>. Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali.'],
     ],
   },
   en: {
-    meta: 'Last updated: 27 July 2026 · version priv-2026-07',
-    lead: 'This notice explains how we handle the data you voluntarily share on Live Abruzzo (for example, by taking the quiz and requesting your itinerary by email). We collect the minimum necessary and never sell your data.',
+    meta: 'Last updated: 10 September 2026 · version priv-2026-09',
+    lead: 'This notice explains how we handle the data you voluntarily share on Live Abruzzo and on the Bottega (for example, by taking the quiz and requesting your itinerary by email, or by booking an experience). We collect the minimum necessary and never sell your data.',
     secs: [
-      ['Data controller', 'Live Abruzzo is a personal project run by Marco Di Censo. For any request about your data, write to <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
-      ['What we collect', 'Only what you enter: your email address, the site language and your quiz result (your travel "profile"). We do not collect payment data or special categories of data.'],
-      ['Why we use it', 'To send you the itinerary you requested and, only if you give optional consent, to keep you posted with Abruzzo travel ideas. The quiz profile helps make suggestions more relevant.'],
-      ['Legal basis', 'Sending the itinerary fulfils your explicit request. Marketing updates rely on your consent, which you can withdraw at any time.'],
-      ['Retention', 'We keep your data while you remain subscribed or until you ask us to delete it. On request, we erase it.'],
-      ['Tools and third parties', 'We use Cloudflare Turnstile to protect the form from spam. Data is stored in a Neon database (PostgreSQL, EU — Frankfurt) and the backend runs on Fly.io infrastructure. These providers process data only to run the service; we do not sell or share your data for commercial purposes.'],
-      ['Your rights', 'You have the right to access, rectify and erase your data and to withdraw consent. To exercise them, write to <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Data controller', 'Live Abruzzo and the Bottega are a personal project run by Marco Di Censo, who is the data controller. This notice covers both sites. For any request about your data, write to <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['What we collect', 'What you enter: your email address, your name, the site language and your quiz result (your travel "profile"). If you use your personal area, also the contact details you choose to add (phone, address, city, country) and the experiences or places you save as favourites. If you register, we keep your account credentials in encrypted form. We also record your IP address, for as long as needed to protect the forms from abuse. We do not collect payment data or special categories of data.'],
+      ['Why we use it', 'To send you the itinerary you requested, to follow up on your bookings on the Bottega and, only if you give optional consent, to keep you posted with Abruzzo travel ideas. The quiz profile helps make suggestions more relevant.'],
+      ['Legal basis', 'Sending the itinerary and handling a booking fulfil your explicit request. Marketing updates rely on your consent, which you can withdraw at any time. Protecting the forms from abuse rests on our legitimate interest in keeping the service working.'],
+      ['Retention', 'We keep your data while you remain subscribed and in any case no longer than 24 months from your last interaction, after which we delete it. You can ask for deletion at any time: we carry it out within 30 days and confirm it to you.'],
+      ['Tools and third parties', 'Cloudflare protects the forms from spam (Turnstile) and routes requests to our backend. Data is stored in a Neon database (PostgreSQL) and the backend runs on Fly.io, both on infrastructure in the European Union (Frankfurt, Germany). The emails we send you go out through Google (Gmail). These providers process data only to run the service; some are based in the United States and such transfers rely on the safeguards provided by European law. We do not sell or share your data for commercial purposes.'],
+      ['Your rights', 'You have the right to access, rectify and erase your data, to restrict processing, to receive your data in a portable format and to withdraw consent. To exercise them, write to <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>. You also have the right to lodge a complaint with the Italian Data Protection Authority (Garante per la protezione dei dati personali).'],
     ],
   },
   de: {
-    meta: 'Zuletzt aktualisiert: 27. Juli 2026 · Version priv-2026-07',
-    lead: 'Dieser Hinweis erklärt, wie wir die Daten verarbeiten, die du freiwillig auf Live Abruzzo angibst (zum Beispiel beim Quiz und bei der Anforderung deiner Reiseroute per E-Mail). Wir erheben nur das Nötigste und verkaufen deine Daten nicht.',
+    meta: 'Zuletzt aktualisiert: 10. September 2026 · Version priv-2026-09',
+    lead: 'Dieser Hinweis erklärt, wie wir die Daten verarbeiten, die du freiwillig auf Live Abruzzo und in der Bottega angibst (zum Beispiel beim Quiz und bei der Anforderung deiner Reiseroute per E-Mail oder beim Buchen eines Erlebnisses). Wir erheben nur das Nötigste und verkaufen deine Daten nicht.',
     secs: [
-      ['Verantwortlicher', 'Live Abruzzo ist ein persönliches Projekt von Marco Di Censo. Bei Fragen zu deinen Daten schreibe an <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
-      ['Welche Daten wir erheben', 'Nur was du eingibst: deine E-Mail-Adresse, die Sprache der Website und dein Quiz-Ergebnis (dein Reise-"Profil"). Wir erheben keine Zahlungsdaten oder besondere Datenkategorien.'],
-      ['Wozu wir sie nutzen', 'Um dir die angeforderte Reiseroute zu senden und, nur mit deiner freiwilligen Einwilligung, um dich mit Reiseideen für die Abruzzen auf dem Laufenden zu halten. Das Quiz-Profil macht die Vorschläge relevanter.'],
-      ['Rechtsgrundlage', 'Der Versand der Reiseroute erfüllt deine ausdrückliche Anfrage. Marketing-Updates beruhen auf deiner Einwilligung, die du jederzeit widerrufen kannst.'],
-      ['Speicherdauer', 'Wir speichern deine Daten, solange du angemeldet bleibst oder bis du die Löschung verlangst. Auf Anfrage löschen wir sie.'],
-      ['Tools und Dritte', 'Wir verwenden Cloudflare Turnstile zum Schutz des Formulars vor Spam. Die Daten werden in einer Neon-Datenbank (PostgreSQL, EU — Frankfurt) gespeichert, das Backend läuft auf Fly.io-Infrastruktur. Diese Anbieter verarbeiten Daten nur zum Betrieb des Dienstes; wir verkaufen oder teilen deine Daten nicht zu kommerziellen Zwecken.'],
-      ['Deine Rechte', 'Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner Daten sowie auf Widerruf der Einwilligung. Schreibe dazu an <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Verantwortlicher', 'Live Abruzzo und die Bottega sind ein persönliches Projekt von Marco Di Censo, der der Verantwortliche im Sinne der DSGVO ist. Dieser Hinweis gilt für beide Websites. Bei Fragen zu deinen Daten schreibe an <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Welche Daten wir erheben', 'Was du eingibst: deine E-Mail-Adresse, deinen Namen, die Sprache der Website und dein Quiz-Ergebnis (dein Reise-"Profil"). Wenn du deinen persönlichen Bereich nutzt, auch die Kontaktdaten, die du hinzufügst (Telefon, Adresse, Stadt, Land), sowie die Erlebnisse oder Unterkünfte, die du als Favoriten speicherst. Wenn du dich registrierst, speichern wir deine Zugangsdaten in verschlüsselter Form. Zusätzlich erfassen wir deine IP-Adresse, solange dies zum Schutz der Formulare vor Missbrauch erforderlich ist. Wir erheben keine Zahlungsdaten oder besondere Datenkategorien.'],
+      ['Wozu wir sie nutzen', 'Um dir die angeforderte Reiseroute zu senden, um deine Buchungen in der Bottega zu bearbeiten und, nur mit deiner freiwilligen Einwilligung, um dich mit Reiseideen für die Abruzzen auf dem Laufenden zu halten. Das Quiz-Profil macht die Vorschläge relevanter.'],
+      ['Rechtsgrundlage', 'Der Versand der Reiseroute und die Bearbeitung einer Buchung erfüllen deine ausdrückliche Anfrage. Marketing-Updates beruhen auf deiner Einwilligung, die du jederzeit widerrufen kannst. Der Schutz der Formulare vor Missbrauch beruht auf unserem berechtigten Interesse am Betrieb des Dienstes.'],
+      ['Speicherdauer', 'Wir speichern deine Daten, solange du angemeldet bleibst, längstens jedoch 24 Monate nach deiner letzten Interaktion; danach löschen wir sie. Du kannst die Löschung jederzeit verlangen: Wir führen sie innerhalb von 30 Tagen durch und bestätigen sie dir.'],
+      ['Tools und Dritte', 'Cloudflare schützt die Formulare vor Spam (Turnstile) und leitet die Anfragen an unser Backend weiter. Die Daten werden in einer Neon-Datenbank (PostgreSQL) gespeichert, das Backend läuft auf Fly.io — beide auf Infrastruktur in der Europäischen Union (Frankfurt, Deutschland). Die E-Mails, die wir dir senden, werden über Google (Gmail) versendet. Diese Anbieter verarbeiten Daten nur zum Betrieb des Dienstes; einige haben ihren Sitz in den Vereinigten Staaten, und die entsprechenden Übermittlungen stützen sich auf die im europäischen Recht vorgesehenen Garantien. Wir verkaufen oder teilen deine Daten nicht zu kommerziellen Zwecken.'],
+      ['Deine Rechte', 'Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner Daten, auf Einschränkung der Verarbeitung, auf Datenübertragbarkeit sowie auf Widerruf der Einwilligung. Schreibe dazu an <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>. Zudem hast du das Recht, dich bei der italienischen Datenschutzbehörde (Garante per la protezione dei dati personali) zu beschweren.'],
     ],
   },
   fr: {
-    meta: 'Dernière mise à jour : 27 juillet 2026 · version priv-2026-07',
-    lead: 'Cette note explique comment nous traitons les données que vous partagez volontairement sur Live Abruzzo (par exemple en faisant le quiz et en demandant votre itinéraire par e-mail). Nous collectons le strict nécessaire et ne vendons jamais vos données.',
+    meta: 'Dernière mise à jour : 10 septembre 2026 · version priv-2026-09',
+    lead: 'Cette note explique comment nous traitons les données que vous partagez volontairement sur Live Abruzzo et sur la Bottega (par exemple en faisant le quiz et en demandant votre itinéraire par e-mail, ou en réservant une expérience). Nous collectons le strict nécessaire et ne vendons jamais vos données.',
     secs: [
-      ['Responsable du traitement', 'Live Abruzzo est un projet personnel géré par Marco Di Censo. Pour toute demande concernant vos données, écrivez à <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
-      ['Données collectées', 'Uniquement ce que vous saisissez : votre adresse e-mail, la langue du site et votre résultat au quiz (votre "profil" de voyage). Nous ne collectons pas de données de paiement ni de catégories particulières de données.'],
-      ['Pourquoi nous les utilisons', 'Pour vous envoyer l\'itinéraire demandé et, seulement si vous donnez un consentement facultatif, pour vous tenir informé des idées de voyage dans les Abruzzes. Le profil du quiz rend les suggestions plus pertinentes.'],
-      ['Base légale', 'L\'envoi de l\'itinéraire répond à votre demande explicite. Les actualités marketing reposent sur votre consentement, que vous pouvez retirer à tout moment.'],
-      ['Conservation', 'Nous conservons vos données tant que vous restez inscrit ou jusqu\'à ce que vous demandiez leur suppression. Sur demande, nous les effaçons.'],
-      ['Outils et tiers', 'Nous utilisons Cloudflare Turnstile pour protéger le formulaire du spam. Les données sont stockées dans une base Neon (PostgreSQL, UE — Francfort) et le backend fonctionne sur l\'infrastructure Fly.io. Ces prestataires traitent les données uniquement pour faire fonctionner le service ; nous ne vendons ni ne partageons vos données à des fins commerciales.'],
-      ['Vos droits', 'Vous avez le droit d\'accéder à vos données, de les rectifier, de les effacer et de retirer votre consentement. Pour les exercer, écrivez à <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Responsable du traitement', 'Live Abruzzo et la Bottega sont un projet personnel géré par Marco Di Censo, qui en est le responsable du traitement. Cette note couvre les deux sites. Pour toute demande concernant vos données, écrivez à <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>.'],
+      ['Données collectées', 'Ce que vous saisissez : votre adresse e-mail, votre nom, la langue du site et votre résultat au quiz (votre "profil" de voyage). Si vous utilisez votre espace personnel, également les coordonnées que vous souhaitez ajouter (téléphone, adresse, ville, pays) et les expériences ou hébergements que vous enregistrez en favoris. Si vous créez un compte, nous conservons vos identifiants sous forme chiffrée. Nous enregistrons également votre adresse IP, le temps nécessaire à protéger les formulaires contre les abus. Nous ne collectons pas de données de paiement ni de catégories particulières de données.'],
+      ['Pourquoi nous les utilisons', 'Pour vous envoyer l\'itinéraire demandé, pour donner suite à vos réservations sur la Bottega et, seulement si vous donnez un consentement facultatif, pour vous tenir informé des idées de voyage dans les Abruzzes. Le profil du quiz rend les suggestions plus pertinentes.'],
+      ['Base légale', 'L\'envoi de l\'itinéraire et la gestion d\'une réservation répondent à votre demande explicite. Les actualités marketing reposent sur votre consentement, que vous pouvez retirer à tout moment. La protection des formulaires contre les abus repose sur notre intérêt légitime à maintenir le service en fonctionnement.'],
+      ['Conservation', 'Nous conservons vos données tant que vous restez inscrit et, en tout état de cause, pas plus de 24 mois après votre dernière interaction, après quoi nous les supprimons. Vous pouvez demander leur suppression à tout moment : nous l\'effectuons sous 30 jours et vous la confirmons.'],
+      ['Outils et tiers', 'Cloudflare protège les formulaires contre le spam (Turnstile) et achemine les requêtes vers notre backend. Les données sont stockées dans une base Neon (PostgreSQL) et le backend fonctionne sur Fly.io, tous deux sur une infrastructure située dans l\'Union européenne (Francfort, Allemagne). Les e-mails que nous vous envoyons partent via Google (Gmail). Ces prestataires traitent les données uniquement pour faire fonctionner le service ; certains sont établis aux États-Unis et ces transferts reposent sur les garanties prévues par le droit européen. Nous ne vendons ni ne partageons vos données à des fins commerciales.'],
+      ['Vos droits', 'Vous avez le droit d\'accéder à vos données, de les rectifier, de les effacer, d\'en limiter le traitement, de les recevoir dans un format portable et de retirer votre consentement. Pour les exercer, écrivez à <a href="mailto:'+PRIVACY_CONTACT+'">'+PRIVACY_CONTACT+'</a>. Vous avez en outre le droit d\'introduire une réclamation auprès de l\'autorité italienne de protection des données (Garante per la protezione dei dati personali).'],
     ],
   },
 };
