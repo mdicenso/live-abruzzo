@@ -72,6 +72,24 @@
 .str-gallery { display: flex; gap: .5rem; flex-wrap: wrap; margin: .2rem 0 1rem; }
 .str-gthumb { width: 84px; height: 62px; border-radius: 8px; background-size: cover; background-position: center; background-color: var(--parchment); }
 #m-book { margin-top: .6rem; }
+/* ── Fase F: "Contatta per info" (il modulo sta in richiesta.js) ── */
+#m-richiesta { margin-top: .5rem; }
+.rq-apri { background: transparent; border: 1px solid var(--olive-mid); color: var(--olive-mid); cursor: pointer; }
+.rq-apri:hover { background: var(--olive-mid); color: #fff; }
+.rq-form { display: flex; flex-direction: column; gap: .55rem; margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--parchment); }
+.rq-titolo { font-size: 1rem; margin: 0; color: var(--ink); }
+.rq-riga { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+.rq-riga-3 { grid-template-columns: repeat(3, 1fr); }
+.rq-riga label { display: flex; flex-direction: column; gap: .2rem; font-size: .72rem; color: var(--muted); }
+.rq-form input, .rq-form textarea { font: inherit; font-size: .9rem; padding: .5rem .6rem; border: 1px solid var(--parchment); border-radius: 8px; background: #fff; color: var(--ink); width: 100%; }
+.rq-form input:focus, .rq-form textarea:focus { outline: 2px solid var(--olive-mid); outline-offset: 1px; }
+.rq-hint, .rq-privacy { font-size: .72rem; color: var(--muted); }
+.rq-invia { align-self: flex-start; background: var(--olive-mid); color: #fff; border: 0; border-radius: 8px; padding: .55rem 1.1rem; font: inherit; font-weight: 600; cursor: pointer; }
+.rq-invia:disabled { opacity: .6; cursor: default; }
+.rq-msg { font-size: .85rem; margin: 0; }
+.rq-msg.ok { color: var(--olive-mid); }
+.rq-msg.err { color: #b4472e; }
+@media(max-width:600px){ .rq-riga, .rq-riga-3 { grid-template-columns: 1fr; } }
 .str-curated { font-size: .82rem; color: var(--muted); margin: 0 0 1.3rem; display: flex; align-items: center; gap: .45rem; }
 .str-curated i { color: var(--olive-mid); }
 .str-empty { text-align: center; color: var(--muted); padding: 3rem 1rem; font-size: .95rem; }
@@ -170,6 +188,8 @@
       <p id="m-desc"></p>
       <div class="str-gallery" id="m-gallery"></div>
       <div id="m-book"></div>
+      <!-- Fase F: "Contatta per info" — il modulo lo monta richiesta.js -->
+      <div id="m-richiesta"></div>
     </div>
   </div>
 </div>
@@ -207,6 +227,8 @@
 
 <script src="i18n.js"></script>
 <script src="data/strutture.js"></script>
+<script src="richiesta.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <!-- ════ JAVASCRIPT ════ -->
 <script>
@@ -337,6 +359,9 @@ function openModal(id) {
     ? foto.map(f => `<div class="str-gthumb" style="background-image:url('${f}')"></div>`).join('') : '';
   document.getElementById('m-book').innerHTML = s.link_booking_esterno
     ? `<a class="str-book" href="${s.link_booking_esterno}" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i> ${T('dr_book')} →</a>` : '';
+  // Fase F: il modulo si rimonta a ogni apertura, cosi' punta sempre alla struttura giusta
+  // e non si porta dietro quello che era stato scritto per un'altra.
+  if (window.AWRichiesta) window.AWRichiesta.monta('m-richiesta', s.id, s.nome || '');
   document.getElementById('modal-backdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
