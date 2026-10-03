@@ -68,7 +68,14 @@ const T18 = {
     qz_cap_sending:'Sending your itinerary…',
     qz_cap_ok:'Thank you! Your itinerary is on its way — check your inbox (and the spam folder).',
     qz_cap_err:'Something went wrong. Please try again.',
-    qz_cap_privacy:'Privacy notice'
+    qz_cap_privacy:'Privacy notice',
+    /* schede struttura — condivise fra dormire.html e strutture/<slug>.html */
+    dr_t_albergo_diffuso:'Scattered hotel', dr_t_hotel:'Hotel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
+    dr_t_agriturismo:'Farm stay', dr_t_rifugio:'Mountain refuge', dr_t_casa_vacanze:'Holiday home', dr_t_ostello:'Hostel',
+    dr_book:'Book',
+    srv_wifi:'Wifi', srv_parcheggio:'Parking', srv_piscina:'Pool',
+    srv_pet_friendly:'Pet friendly', srv_colazione_inclusa:'Breakfast included',
+    s_price_from:'from', s_price_night:'/night', s_capacity:'Capacity', s_amenities:'Amenities', s_map:'Map'
   },
   it: {
     n_home:'Home', n_quiz:'Quiz', n_hiking:'Trekking', n_food:'Cibo & Vino',
@@ -124,7 +131,13 @@ const T18 = {
     qz_cap_sending:'Invio in corso…',
     qz_cap_ok:'Grazie! Ti abbiamo inviato il tuo itinerario — controlla la posta (anche lo spam).',
     qz_cap_err:'Qualcosa è andato storto. Riprova.',
-    qz_cap_privacy:'Informativa privacy'
+    qz_cap_privacy:'Informativa privacy',
+    dr_t_albergo_diffuso:'Albergo diffuso', dr_t_hotel:'Hotel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
+    dr_t_agriturismo:'Agriturismo', dr_t_rifugio:'Rifugio', dr_t_casa_vacanze:'Casa vacanze', dr_t_ostello:'Ostello',
+    dr_book:'Prenota',
+    srv_wifi:'Wifi', srv_parcheggio:'Parcheggio', srv_piscina:'Piscina',
+    srv_pet_friendly:'Pet friendly', srv_colazione_inclusa:'Colazione inclusa',
+    s_price_from:'da', s_price_night:'/notte', s_capacity:'Capacità', s_amenities:'Servizi', s_map:'Mappa'
   },
   de: {
     n_home:'Startseite', n_quiz:'Quiz', n_hiking:'Wandern', n_food:'Essen & Wein',
@@ -180,7 +193,13 @@ const T18 = {
     qz_cap_sending:'Wird gesendet…',
     qz_cap_ok:'Danke! Wir haben dir deine Reiseroute geschickt — prüfe dein Postfach (auch den Spam-Ordner).',
     qz_cap_err:'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
-    qz_cap_privacy:'Datenschutzhinweis'
+    qz_cap_privacy:'Datenschutzhinweis',
+    dr_t_albergo_diffuso:'Albergo diffuso', dr_t_hotel:'Hotel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
+    dr_t_agriturismo:'Agriturismo', dr_t_rifugio:'Berghütte', dr_t_casa_vacanze:'Ferienhaus', dr_t_ostello:'Hostel',
+    dr_book:'Buchen',
+    srv_wifi:'Wifi', srv_parcheggio:'Parkplatz', srv_piscina:'Pool',
+    srv_pet_friendly:'Haustiere erlaubt', srv_colazione_inclusa:'Frühstück inklusive',
+    s_price_from:'ab', s_price_night:'/Nacht', s_capacity:'Kapazität', s_amenities:'Ausstattung', s_map:'Karte'
   },
   fr: {
     n_home:'Accueil', n_quiz:'Quiz', n_hiking:'Randonnée', n_food:'Gastronomie',
@@ -236,7 +255,13 @@ const T18 = {
     qz_cap_sending:'Envoi en cours…',
     qz_cap_ok:'Merci ! Nous vous avons envoyé votre itinéraire — vérifiez votre boîte mail (et les spams).',
     qz_cap_err:'Une erreur est survenue. Veuillez réessayer.',
-    qz_cap_privacy:'Politique de confidentialité'
+    qz_cap_privacy:'Politique de confidentialité',
+    dr_t_albergo_diffuso:'Albergo diffuso', dr_t_hotel:'Hôtel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
+    dr_t_agriturismo:'Agritourisme', dr_t_rifugio:'Refuge', dr_t_casa_vacanze:'Maison de vacances', dr_t_ostello:'Auberge',
+    dr_book:'Réserver',
+    srv_wifi:'Wifi', srv_parcheggio:'Parking', srv_piscina:'Piscine',
+    srv_pet_friendly:'Animaux acceptés', srv_colazione_inclusa:'Petit-déjeuner inclus',
+    s_price_from:'dès', s_price_night:'/nuit', s_capacity:'Capacité', s_amenities:'Équipements', s_map:'Carte'
   }
 };
 
