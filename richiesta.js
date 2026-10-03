@@ -5,12 +5,14 @@
    c'era solo "Prenota", che è un link esterno: chi lo premeva usciva dal sito e
    non ne sapevamo più niente.
 
-   UN SOLO FILE per tutte le pagine che mostrano strutture (dormire, gusto): il
-   modulo è identico, e due copie divergono sempre — di solito in una lingua sola,
-   che è il modo peggiore di accorgersene.
+   UN SOLO FILE per tutte le pagine che mostrano strutture (dormire, pagine
+   struttura generate dal CDP, gusto): il modulo è identico, e due copie
+   divergono sempre — di solito in una lingua sola, che è il modo peggiore di
+   accorgersene. Modulo generico: monta il form dentro un contenitore vuoto
+   qualsiasi, dentro una pagina intera o altrove — non assume più un modal.
 
-   Uso, dentro openModal() della pagina:
-       AWRichiesta.monta('m-richiesta', s.id, s.nome);
+   Uso:
+       AWRichiesta.monta('s-richiesta', s.id, s.nome);
 
    Il portale è statico (GitHub Pages): la scrittura passa dall'API del CDP, con
    honeypot e Turnstile, esattamente come il quiz.
@@ -202,8 +204,8 @@
   }
 
   window.AWRichiesta = {
-    /* Chiamata dall'apertura della scheda. `idContenitore` è un div vuoto nel
-       modal della pagina. */
+    /* Chiamata da chi monta la scheda. `idContenitore` è un div vuoto nella
+       pagina (o nel container) che ospita il modulo. */
     monta: function (idContenitore, slug, nome) {
       var c = document.getElementById(idContenitore);
       if (!c) return;
@@ -211,7 +213,7 @@
       stato.slug = slug || '';
       stato.nome = nome || '';
       stato.aperto = false;
-      stato.widget = null;      /* il modal si richiude: il widget va rifatto */
+      stato.widget = null;      /* si rimonta da zero: il widget va rifatto */
       c.innerHTML = html();
       var b = document.getElementById('rq-apri');
       if (b) b.addEventListener('click', apri);

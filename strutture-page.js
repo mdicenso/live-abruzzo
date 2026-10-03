@@ -75,7 +75,7 @@
       pezzi.push('<span class="s-info-item"><i class="ti ti-users" aria-hidden="true"></i> ' + T('s_capacity') + ': ' + cap + '</span>');
     }
     if (s.servizi && s.servizi.length > 0) {
-      pezzi.push('<span style="display:block;font-weight:600;margin-top:8px;">' + T('s_amenities') + '</span>');
+      pezzi.push('<span style="display:block;font-weight:600;margin-top:8px;flex-basis:100%;">' + T('s_amenities') + '</span>');
     }
     (s.servizi || []).forEach(function (sv) { pezzi.push(servizioChip(sv)); });
     var el = document.getElementById('s-info');
@@ -92,7 +92,7 @@
     var d = 0.01;
     var bbox = (s.lng - d) + ',' + (s.lat - d) + ',' + (s.lng + d) + ',' + (s.lat + d);
     el.innerHTML = '<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=' +
-      bbox + '&marker=' + s.lat + ',' + s.lng + '" loading="lazy" title="' + T('s_map') + '"></iframe>';
+      bbox + '&amp;marker=' + s.lat + ',' + s.lng + '" loading="lazy" title="' + T('s_map') + '"></iframe>';
     el.style.display = '';
   }
 
