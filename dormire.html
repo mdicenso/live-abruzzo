@@ -68,28 +68,10 @@
 }
 .str-book:hover { background: var(--olive-mid); transform: translateY(-1px); }
 .str-details { font-size: .78rem; color: var(--rose); font-weight: 500; white-space: nowrap; }
-/* galleria foto extra nel modal */
-.str-gallery { display: flex; gap: .5rem; flex-wrap: wrap; margin: .2rem 0 1rem; }
-.str-gthumb { width: 84px; height: 62px; border-radius: 8px; background-size: cover; background-position: center; background-color: var(--parchment); }
-#m-book { margin-top: .6rem; }
-/* ── Fase F: "Contatta per info" (il modulo sta in richiesta.js) ── */
-#m-richiesta { margin-top: .5rem; }
-.rq-apri { background: transparent; border: 1px solid var(--olive-mid); color: var(--olive-mid); cursor: pointer; }
-.rq-apri:hover { background: var(--olive-mid); color: #fff; }
-.rq-form { display: flex; flex-direction: column; gap: .55rem; margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--parchment); }
-.rq-titolo { font-size: 1rem; margin: 0; color: var(--ink); }
-.rq-riga { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
-.rq-riga-3 { grid-template-columns: repeat(3, 1fr); }
-.rq-riga label { display: flex; flex-direction: column; gap: .2rem; font-size: .72rem; color: var(--muted); }
-.rq-form input, .rq-form textarea { font: inherit; font-size: .9rem; padding: .5rem .6rem; border: 1px solid var(--parchment); border-radius: 8px; background: #fff; color: var(--ink); width: 100%; }
-.rq-form input:focus, .rq-form textarea:focus { outline: 2px solid var(--olive-mid); outline-offset: 1px; }
-.rq-hint, .rq-privacy { font-size: .72rem; color: var(--muted); }
-.rq-invia { align-self: flex-start; background: var(--olive-mid); color: #fff; border: 0; border-radius: 8px; padding: .55rem 1.1rem; font: inherit; font-weight: 600; cursor: pointer; }
-.rq-invia:disabled { opacity: .6; cursor: default; }
-.rq-msg { font-size: .85rem; margin: 0; }
-.rq-msg.ok { color: var(--olive-mid); }
-.rq-msg.err { color: #b4472e; }
-@media(max-width:600px){ .rq-riga, .rq-riga-3 { grid-template-columns: 1fr; } }
+.str-meta-row { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.str-price { font-size: .82rem; font-weight: 600; color: var(--olive-mid); }
+.str-cap { font-size: .78rem; color: var(--muted); }
+.str-svchip { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--parchment); color: var(--olive-mid); font-size: .78rem; }
 .str-curated { font-size: .82rem; color: var(--muted); margin: 0 0 1.3rem; display: flex; align-items: center; gap: .45rem; }
 .str-curated i { color: var(--olive-mid); }
 .str-empty { text-align: center; color: var(--muted); padding: 3rem 1rem; font-size: .95rem; }
@@ -167,31 +149,14 @@
 
 <!-- ════ CONTENT ════ -->
 <div class="wrap">
+  <div class="str-sort-row" style="display:flex;justify-content:flex-end;margin-bottom:.8rem">
+    <select id="str-sort" onchange="strSort(this.value)" style="font:inherit;font-size:.82rem;padding:.4rem .7rem;border-radius:8px;border:1px solid var(--parchment-dk);background:#fff;color:var(--ink)">
+      <option value="evidenza" data-i18n="dr_sort_evidenza">Featured</option>
+      <option value="prezzo" data-i18n="dr_sort_prezzo">Price: low to high</option>
+    </select>
+  </div>
   <p class="str-curated"><i class="ti ti-rosette-discount-check" aria-hidden="true"></i> <span data-i18n="dr_curated">Selected partner accommodations</span></p>
   <div class="str-grid" id="str-grid"></div>
-</div>
-
-<!-- ════ MODAL DETTAGLIO STRUTTURA (solo campi pubblici) ════ -->
-<div class="modal-backdrop" id="modal-backdrop" onclick="if(event.target.id==='modal-backdrop')closeModal()">
-  <div class="modal">
-    <div class="modal-hero">
-      <img id="m-img" src="" alt="">
-      <div class="modal-hero-veil"></div>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
-      <div class="modal-info">
-        <small id="m-sub"></small>
-        <h2 id="m-title"></h2>
-      </div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-badges" id="m-badges"></div>
-      <p id="m-desc"></p>
-      <div class="str-gallery" id="m-gallery"></div>
-      <div id="m-book"></div>
-      <!-- Fase F: "Contatta per info" — il modulo lo monta richiesta.js -->
-      <div id="m-richiesta"></div>
-    </div>
-  </div>
 </div>
 
 <!-- ════ NEWSLETTER ════ -->
@@ -227,8 +192,6 @@
 
 <script src="i18n.js"></script>
 <script src="data/strutture.js"></script>
-<script src="richiesta.js"></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <!-- ════ JAVASCRIPT ════ -->
 <script>
@@ -239,6 +202,7 @@ Object.assign(T18.en, {
   dr_all:'All', dr_place:'place', dr_places:'places',
   dr_book:'Book', dr_ask:'Contact for info', dr_details:'Details', dr_curated:'Selected partner accommodations',
   dr_empty:'No accommodations published yet — check back soon.',
+  dr_sort_evidenza:'Featured', dr_sort_prezzo:'Price: low to high',
   dr_t_albergo_diffuso:'Scattered hotel', dr_t_hotel:'Hotel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
   dr_t_agriturismo:'Farm stay', dr_t_rifugio:'Mountain refuge', dr_t_casa_vacanze:'Holiday home', dr_t_ostello:'Hostel'
 });
@@ -248,6 +212,7 @@ Object.assign(T18.it, {
   dr_all:'Tutti', dr_place:'struttura', dr_places:'strutture',
   dr_book:'Prenota', dr_ask:'Contatta per info', dr_details:'Dettagli', dr_curated:'Strutture partner selezionate',
   dr_empty:'Nessuna struttura ancora pubblicata — torna presto.',
+  dr_sort_evidenza:'In evidenza', dr_sort_prezzo:'Prezzo: dal più basso',
   dr_t_albergo_diffuso:'Albergo diffuso', dr_t_hotel:'Hotel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
   dr_t_agriturismo:'Agriturismo', dr_t_rifugio:'Rifugio', dr_t_casa_vacanze:'Casa vacanze', dr_t_ostello:'Ostello'
 });
@@ -257,6 +222,7 @@ Object.assign(T18.de, {
   dr_all:'Alle', dr_place:'Unterkunft', dr_places:'Unterkünfte',
   dr_book:'Buchen', dr_ask:'Für Infos kontaktieren', dr_details:'Details', dr_curated:'Ausgewählte Partnerunterkünfte',
   dr_empty:'Noch keine Unterkünfte veröffentlicht — bald wieder vorbeischauen.',
+  dr_sort_evidenza:'Empfohlen', dr_sort_prezzo:'Preis: aufsteigend',
   dr_t_albergo_diffuso:'Albergo diffuso', dr_t_hotel:'Hotel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
   dr_t_agriturismo:'Agriturismo', dr_t_rifugio:'Berghütte', dr_t_casa_vacanze:'Ferienhaus', dr_t_ostello:'Hostel'
 });
@@ -266,6 +232,7 @@ Object.assign(T18.fr, {
   dr_all:'Tous', dr_place:'hébergement', dr_places:'hébergements',
   dr_book:'Réserver', dr_ask:'Contacter pour infos', dr_details:'Détails', dr_curated:'Hébergements partenaires sélectionnés',
   dr_empty:"Aucun hébergement publié pour l'instant — revenez bientôt.",
+  dr_sort_evidenza:'En vedette', dr_sort_prezzo:'Prix croissant',
   dr_t_albergo_diffuso:'Albergo diffuso', dr_t_hotel:'Hôtel', dr_t_bb:'B&B', dr_t_bed_and_breakfast:'B&B',
   dr_t_agriturismo:'Agritourisme', dr_t_rifugio:'Refuge', dr_t_casa_vacanze:'Maison de vacances', dr_t_ostello:'Auberge'
 });
@@ -302,8 +269,33 @@ function strFilter(tag, btn) {
 }
 
 /* ══ RENDER ══ */
+let activeSort = 'evidenza';
+function strSort(v) { activeSort = v; renderStrutture(); }
+
+function ordina(list) {
+  if (activeSort !== 'prezzo') return list;
+  return [...list].sort((a, b) => {
+    const pa = a.prezzo_da, pb = b.prezzo_da;
+    if (pa == null && pb == null) return 0;
+    if (pa == null) return 1;
+    if (pb == null) return -1;
+    return pa - pb;
+  });
+}
+
+const SERVIZI_ICON = { wifi: 'ti-wifi', parcheggio: 'ti-parking', piscina: 'ti-pool',
+  pet_friendly: 'ti-paw', colazione_inclusa: 'ti-coffee' };
+
+function servizioChipMini(codice) {
+  const icona = SERVIZI_ICON[codice] || 'ti-check';
+  const k = 'srv_' + codice;
+  const et = T(k) !== k ? T(k) : capit(codice.replace(/_/g, ' '));
+  return `<span class="str-svchip" title="${et}"><i class="ti ${icona}" aria-hidden="true"></i></span>`;
+}
+
 function renderStrutture() {
-  const list = activeTag === 'all' ? strutture : strutture.filter(s => (s.tags || []).includes(activeTag));
+  const filtrata = activeTag === 'all' ? strutture : strutture.filter(s => (s.tags || []).includes(activeTag));
+  const list = ordina(filtrata);
   const cnt = document.getElementById('str-count');
   if (cnt) cnt.textContent = list.length + ' ' + T(list.length !== 1 ? 'dr_places' : 'dr_place');
 
@@ -317,11 +309,11 @@ function renderStrutture() {
     const loc = [s.comune, s.zona_geografica].filter(Boolean).join(' · ');
     const desc = L(s.descrizione_breve) || '';
     const tags = (s.tags || []).map(t => `<span class="tag">${capit(t)}</span>`).join('');
-    const book = s.link_booking_esterno
-      ? `<a class="str-book" href="${s.link_booking_esterno}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-external-link" aria-hidden="true"></i> ${T('dr_book')} →</a>`
-      : '<span></span>';
+    const cap = L(s.capacita);
+    const prezzo = s.prezzo_da ? `<span class="str-price">${T('s_price_from')} ${s.prezzo_da}€${T('s_price_night')}</span>` : '';
+    const servizi = (s.servizi || []).slice(0, 3).map(servizioChipMini).join('');
     return `
-      <div class="str-card" onclick="openModal('${s.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openModal('${s.id}')">
+      <a class="str-card" href="strutture/${s.id}.html">
         <div class="str-img-wrap">
           <div class="str-img${imgClass}" ${imgStyle}></div>
           <div class="str-img-overlay"></div>
@@ -331,45 +323,13 @@ function renderStrutture() {
           <h3>${s.nome || ''}</h3>
           ${loc ? `<div class="str-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> ${loc}</div>` : ''}
           ${desc ? `<p>${desc}</p>` : ''}
+          <div class="str-meta-row">${prezzo}${cap ? `<span class="str-cap">${cap}</span>` : ''}${servizi}</div>
           ${tags ? `<div class="str-tags">${tags}</div>` : ''}
-          <div class="str-footer">${book}<span class="str-details">${T('dr_details')} →</span></div>
+          <div class="str-footer"><span class="str-details">${T('dr_details')} →</span></div>
         </div>
-      </div>`;
+      </a>`;
   }).join('');
 }
-
-/* ══ MODAL DETTAGLIO ══ (solo campi pubblici presenti) */
-let openSid = null;
-function openModal(id) {
-  const s = strutture.find(x => x.id === id); if (!s) return;
-  openSid = id;
-  const foto = s.foto_url || [];
-  const img = document.getElementById('m-img');
-  if (foto[0]) { img.src = foto[0]; img.alt = s.nome || ''; img.style.display = ''; document.querySelector('.modal-hero').classList.remove('str-img-empty'); }
-  else { img.style.display = 'none'; document.querySelector('.modal-hero').classList.add('str-img-empty'); }
-  document.getElementById('m-sub').textContent = [s.comune, s.zona_geografica].filter(Boolean).join(' · ');
-  document.getElementById('m-title').textContent = s.nome || '';
-  document.getElementById('m-badges').innerHTML =
-    `<span class="tag" style="background:rgba(61,74,46,.12);color:var(--olive-mid)"><i class="ti ti-bed" aria-hidden="true"></i> ${tipoLabel(s.tipo_ricettivo)}</span>` +
-    (s.tags || []).map(t => `<span class="tag">${capit(t)}</span>`).join('');
-  const desc = L(s.descrizione_estesa) || L(s.descrizione_breve) || '';   /* estesa se c'è, altrimenti breve */
-  const pd = document.getElementById('m-desc');
-  pd.textContent = desc; pd.style.display = desc ? '' : 'none';
-  document.getElementById('m-gallery').innerHTML = foto.length > 1
-    ? foto.map(f => `<div class="str-gthumb" style="background-image:url('${f}')"></div>`).join('') : '';
-  document.getElementById('m-book').innerHTML = s.link_booking_esterno
-    ? `<a class="str-book" href="${s.link_booking_esterno}" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i> ${T('dr_book')} →</a>` : '';
-  // Fase F: il modulo si rimonta a ogni apertura, cosi' punta sempre alla struttura giusta
-  // e non si porta dietro quello che era stato scritto per un'altra.
-  if (window.AWRichiesta) window.AWRichiesta.monta('m-richiesta', s.id, s.nome || '');
-  document.getElementById('modal-backdrop').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('modal-backdrop').classList.remove('open');
-  document.body.style.overflow = ''; openSid = null;
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 /* ══ NEWSLETTER ══ */
 function nlSubmit() {
@@ -383,7 +343,7 @@ renderFilter();
 renderStrutture();
 
 /* ══ RE-RENDER AL CAMBIO LINGUA ══ */
-document.addEventListener('aw:langchange', () => { renderFilter(); renderStrutture(); if (openSid) openModal(openSid); });
+document.addEventListener('aw:langchange', () => { renderFilter(); renderStrutture(); });
 </script>
 
 </body>
