@@ -83,6 +83,50 @@
     el.style.display = pezzi.length ? '' : 'none';
   }
 
+  /* Griglia del mese CORRENTE (calcolato nel browser, non fissato a quando la pagina
+     e' stata generata — altrimenti sarebbe sbagliata appena cambia il mese, fino alla
+     prossima pubblicazione manuale). */
+  function renderDisponibilita(s) {
+    var el = document.getElementById('s-disponibilita');
+    if (!s.ical_aggiornato_il) { el.style.display = 'none'; return; }
+
+    var occupato = {};
+    (s.ical_occupato || []).forEach(function (d) { occupato[d] = true; });
+
+    var oggi = new Date();
+    var anno = oggi.getFullYear(), mese = oggi.getMonth();
+    var giorniNelMese = new Date(anno, mese + 1, 0).getDate();
+    var primoGiornoSettimana = (new Date(anno, mese, 1).getDay() + 6) % 7; // lunedi'=0
+
+    function isoDate(d) {
+      var mm = String(mese + 1).padStart(2, '0');
+      var dd = String(d).padStart(2, '0');
+      return anno + '-' + mm + '-' + dd;
+    }
+
+    var oggiIso = isoDate(oggi.getDate());
+    var primaLibera = '';
+    var celle = '';
+    for (var i = 0; i < primoGiornoSettimana; i++) celle += '<div class="s-day pad"></div>';
+    for (var d = 1; d <= giorniNelMese; d++) {
+      var iso = isoDate(d);
+      var occ = !!occupato[iso];
+      if (!occ && !primaLibera && iso >= oggiIso) primaLibera = iso;
+      celle += '<div class="s-day ' + (occ ? 'busy' : 'free') + '">' + d + '</div>';
+    }
+
+    var html = '';
+    if (primaLibera) {
+      html += '<span class="s-disp-pill">' + T('s_disponibile_dal') + ' ' + primaLibera + '</span>';
+    }
+    html += '<div class="s-grid-mese">' + celle + '</div>';
+    html += '<p class="s-disp-muted">' + T('s_aggiornato_il') + ' ' +
+      s.ical_aggiornato_il.replace('T', ' ') + ' (' + T('s_da_ical') + ')</p>';
+
+    el.innerHTML = html;
+    el.style.display = '';
+  }
+
   /* Mappa: iframe OpenStreetMap, nessuna chiave richiesta — coerente con l'attenzione
      gia' mostrata altrove nel progetto a non introdurre dipendenze/costi Google
      oltre al place_id. */
@@ -111,6 +155,7 @@
     renderDesc(s);
     renderGallery(s);
     renderInfo(s);
+    renderDisponibilita(s);
     renderMap(s);
     renderBook(s);
     if (window.AWRichiesta) window.AWRichiesta.monta('s-richiesta', s.id, s.nome || '');
