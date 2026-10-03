@@ -12,3 +12,5 @@ _foto_sito/
 
 # File di prova/mockup (non pubblicare)
 prova-*
+
+.worktrees/
