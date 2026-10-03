@@ -88,6 +88,7 @@
      prossima pubblicazione manuale). */
   function renderDisponibilita(s) {
     var el = document.getElementById('s-disponibilita');
+    if (!el) return;
     if (!s.ical_aggiornato_il) { el.style.display = 'none'; return; }
 
     var occupato = {};
@@ -112,12 +113,23 @@
       var iso = isoDate(d);
       var occ = !!occupato[iso];
       if (!occ && !primaLibera && iso >= oggiIso) primaLibera = iso;
-      celle += '<div class="s-day ' + (occ ? 'busy' : 'free') + '">' + d + '</div>';
+      var isPast = iso < oggiIso;
+      if (isPast) {
+        celle += '<div class="s-day" style="opacity:.35">' + d + '</div>';
+      } else {
+        celle += '<div class="s-day ' + (occ ? 'busy' : 'free') + '">' + d + '</div>';
+      }
     }
 
-    var html = '';
+    var meseTxt = oggi.toLocaleDateString(typeof lang !== 'undefined' ? lang : 'en',
+      { month: 'long', year: 'numeric' });
+    meseTxt = meseTxt.charAt(0).toUpperCase() + meseTxt.slice(1);
+
+    var html = '<p class="s-disp-mese">' + meseTxt + '</p>';
     if (primaLibera) {
       html += '<span class="s-disp-pill">' + T('s_disponibile_dal') + ' ' + primaLibera + '</span>';
+    } else {
+      html += '<span class="s-disp-pill">' + T('s_tutto_occupato') + '</span>';
     }
     html += '<div class="s-grid-mese">' + celle + '</div>';
     html += '<p class="s-disp-muted">' + T('s_aggiornato_il') + ' ' +
