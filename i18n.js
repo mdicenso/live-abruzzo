@@ -75,7 +75,8 @@ const T18 = {
     dr_book:'Book',
     srv_wifi:'Wifi', srv_parcheggio:'Parking', srv_piscina:'Pool',
     srv_pet_friendly:'Pet friendly', srv_colazione_inclusa:'Breakfast included',
-    s_price_from:'from', s_price_night:'/night', s_capacity:'Capacity', s_amenities:'Amenities', s_map:'Map'
+    s_price_from:'from', s_price_night:'/night', s_capacity:'Capacity', s_amenities:'Amenities', s_map:'Map',
+    s_disponibile_dal:'Free from', s_aggiornato_il:'Updated', s_da_ical:'from calendar sync'
   },
   it: {
     n_home:'Home', n_quiz:'Quiz', n_hiking:'Trekking', n_food:'Cibo & Vino',
@@ -137,7 +138,8 @@ const T18 = {
     dr_book:'Prenota',
     srv_wifi:'Wifi', srv_parcheggio:'Parcheggio', srv_piscina:'Piscina',
     srv_pet_friendly:'Pet friendly', srv_colazione_inclusa:'Colazione inclusa',
-    s_price_from:'da', s_price_night:'/notte', s_capacity:'Capacità', s_amenities:'Servizi', s_map:'Mappa'
+    s_price_from:'da', s_price_night:'/notte', s_capacity:'Capacità', s_amenities:'Servizi', s_map:'Mappa',
+    s_disponibile_dal:'Libera dal', s_aggiornato_il:'Aggiornato il', s_da_ical:'da calendario iCal'
   },
   de: {
     n_home:'Startseite', n_quiz:'Quiz', n_hiking:'Wandern', n_food:'Essen & Wein',
@@ -199,7 +201,8 @@ const T18 = {
     dr_book:'Buchen',
     srv_wifi:'Wifi', srv_parcheggio:'Parkplatz', srv_piscina:'Pool',
     srv_pet_friendly:'Haustiere erlaubt', srv_colazione_inclusa:'Frühstück inklusive',
-    s_price_from:'ab', s_price_night:'/Nacht', s_capacity:'Kapazität', s_amenities:'Ausstattung', s_map:'Karte'
+    s_price_from:'ab', s_price_night:'/Nacht', s_capacity:'Kapazität', s_amenities:'Ausstattung', s_map:'Karte',
+    s_disponibile_dal:'Frei ab', s_aggiornato_il:'Aktualisiert am', s_da_ical:'aus iCal-Kalender'
   },
   fr: {
     n_home:'Accueil', n_quiz:'Quiz', n_hiking:'Randonnée', n_food:'Gastronomie',
@@ -261,7 +264,8 @@ const T18 = {
     dr_book:'Réserver',
     srv_wifi:'Wifi', srv_parcheggio:'Parking', srv_piscina:'Piscine',
     srv_pet_friendly:'Animaux acceptés', srv_colazione_inclusa:'Petit-déjeuner inclus',
-    s_price_from:'dès', s_price_night:'/nuit', s_capacity:'Capacité', s_amenities:'Équipements', s_map:'Carte'
+    s_price_from:'dès', s_price_night:'/nuit', s_capacity:'Capacité', s_amenities:'Équipements', s_map:'Carte',
+    s_disponibile_dal:'Libre à partir du', s_aggiornato_il:'Mis à jour le', s_da_ical:'depuis le calendrier iCal'
   }
 };
 
