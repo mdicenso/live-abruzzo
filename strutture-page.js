@@ -72,7 +72,10 @@
     }
     var cap = L(s.capacita);
     if (cap) {
-      pezzi.push('<span class="s-info-item"><i class="ti ti-users" aria-hidden="true"></i> ' + cap + '</span>');
+      pezzi.push('<span class="s-info-item"><i class="ti ti-users" aria-hidden="true"></i> ' + T('s_capacity') + ': ' + cap + '</span>');
+    }
+    if (s.servizi && s.servizi.length > 0) {
+      pezzi.push('<span style="display:block;font-weight:600;margin-top:8px;">' + T('s_amenities') + '</span>');
     }
     (s.servizi || []).forEach(function (sv) { pezzi.push(servizioChip(sv)); });
     var el = document.getElementById('s-info');
