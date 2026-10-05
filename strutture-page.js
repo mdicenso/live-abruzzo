@@ -15,6 +15,18 @@
     pet_friendly: 'ti-paw', colazione_inclusa: 'ti-coffee'
   };
 
+  var TIPO_ICON_PLACEHOLDER = {
+    albergo_diffuso: 'ti-building-community', hotel: 'ti-building-skyscraper',
+    bed_and_breakfast: 'ti-coffee', agriturismo: 'ti-plant-2',
+    rifugio: 'ti-mountain', casa_vacanze: 'ti-home', ostello: 'ti-users'
+  };
+
+  var SERVIZI_CATEGORIA = {
+    wifi: 'accoglienza', parcheggio: 'accoglienza',
+    colazione_inclusa: 'ristorazione', piscina: 'benessere', pet_friendly: 'comfort'
+  };
+  var ORDINE_CATEGORIE_SERVIZI = ['accoglienza', 'ristorazione', 'benessere', 'comfort', 'altro'];
+
   function capit(s) { return (s || '').charAt(0).toUpperCase() + (s || '').slice(1); }
 
   function tipoLabel(t) {
@@ -47,6 +59,12 @@
     document.getElementById('s-badges').innerHTML = html;
   }
 
+  function renderSubtitle(s) {
+    var loc = [s.comune, s.zona_geografica].filter(Boolean).join(' · ');
+    var pezzi = [tipoLabel(s.tipo_ricettivo), loc, s.classificazione].filter(Boolean);
+    document.getElementById('s-subtitle').textContent = pezzi.join(' · ');
+  }
+
   function renderDesc(s) {
     var el = document.getElementById('s-desc');
     var testo = L(s.descrizione_estesa) || L(s.descrizione_breve) || '';
@@ -54,33 +72,62 @@
     el.style.display = testo ? '' : 'none';
   }
 
+  /* "Non spariscono i pezzi": la galleria resta sempre visibile. Senza foto, un
+     placeholder grafico (icona per tipologia, nessuna foto stock/remota) invece di
+     una sezione vuota o nascosta. */
   function renderGallery(s) {
     var foto = s.foto_url || [];
     var el = document.getElementById('s-gallery');
-    el.innerHTML = foto.length > 1
-      ? foto.map(function (f) {
-          return '<div class="s-gthumb" style="background-image:url(\'' + resolveImg(f) + '\')"></div>';
-        }).join('')
-      : '';
+    if (foto.length === 0) {
+      var icona = TIPO_ICON_PLACEHOLDER[s.tipo_ricettivo] || 'ti-bed';
+      el.innerHTML = '<div class="s-gthumb-placeholder"><i class="ti ' + icona + '" aria-hidden="true"></i>' +
+        '<span>' + T('s_foto_in_arrivo') + '</span></div>';
+    } else {
+      el.innerHTML = foto.map(function (f) {
+        return '<div class="s-gthumb" style="background-image:url(\'' + resolveImg(f) + '\')"></div>';
+      }).join('');
+    }
   }
 
-  function renderInfo(s) {
+  /* Prezzo/capacità: vanno nella card sticky (prezzo-da e classificazione sono gli
+     unici dati "minori" che possono non comparire, invariato rispetto a prima). */
+  function renderPrezzoCapacita(s) {
     var pezzi = [];
     if (s.prezzo_da) {
-      pezzi.push('<span class="s-info-item"><i class="ti ti-tag" aria-hidden="true"></i> ' +
+      pezzi.push('<span class="s-info-item s-info-price"><i class="ti ti-tag" aria-hidden="true"></i> ' +
         T('s_price_from') + ' ' + s.prezzo_da + '€' + T('s_price_night') + '</span>');
     }
     var cap = L(s.capacita);
     if (cap) {
       pezzi.push('<span class="s-info-item"><i class="ti ti-users" aria-hidden="true"></i> ' + T('s_capacity') + ': ' + cap + '</span>');
     }
-    if (s.servizi && s.servizi.length > 0) {
-      pezzi.push('<span style="display:block;font-weight:600;margin-top:8px;flex-basis:100%;">' + T('s_amenities') + '</span>');
-    }
-    (s.servizi || []).forEach(function (sv) { pezzi.push(servizioChip(sv)); });
-    var el = document.getElementById('s-info');
+    var el = document.getElementById('s-sticky-price');
     el.innerHTML = pezzi.join('');
     el.style.display = pezzi.length ? '' : 'none';
+  }
+
+  /* Servizi raggruppati per categoria (stile Visit Tuscany). Lista vuota -> la
+     sezione non compare: non e' uno dei due blocchi "mai spariscono" (galleria,
+     disponibilita'), stesso trattamento di prima. */
+  function renderServizi(s) {
+    var el = document.getElementById('s-info');
+    var servizi = s.servizi || [];
+    if (!servizi.length) { el.innerHTML = ''; el.style.display = 'none'; return; }
+    var gruppi = {};
+    servizi.forEach(function (sv) {
+      var cat = SERVIZI_CATEGORIA[sv] || 'altro';
+      (gruppi[cat] = gruppi[cat] || []).push(sv);
+    });
+    var html = '<h3 class="s-info-title">' + T('s_amenities') + '</h3>';
+    ORDINE_CATEGORIE_SERVIZI.forEach(function (cat) {
+      if (!gruppi[cat]) return;
+      html += '<div class="s-info-gruppo">' +
+        '<p class="s-info-gruppo-titolo">' + T('srv_cat_' + cat) + '</p>' +
+        '<div class="s-info-gruppo-chips">' + gruppi[cat].map(servizioChip).join('') + '</div>' +
+        '</div>';
+    });
+    el.innerHTML = html;
+    el.style.display = '';
   }
 
   /* Griglia del mese CORRENTE (calcolato nel browser, non fissato a quando la pagina
@@ -163,10 +210,12 @@
   var strutturaCorrente = null;
 
   function renderTutto(s) {
+    renderSubtitle(s);
     renderBadges(s);
     renderDesc(s);
     renderGallery(s);
-    renderInfo(s);
+    renderPrezzoCapacita(s);
+    renderServizi(s);
     renderDisponibilita(s);
     renderMap(s);
     renderBook(s);
