@@ -118,11 +118,13 @@
       var cat = SERVIZI_CATEGORIA[sv] || 'altro';
       (gruppi[cat] = gruppi[cat] || []).push(sv);
     });
+    var numGruppi = Object.keys(gruppi).length;
     var html = '<h3 class="s-info-title">' + T('s_amenities') + '</h3>';
     ORDINE_CATEGORIE_SERVIZI.forEach(function (cat) {
       if (!gruppi[cat]) return;
+      var titolo = numGruppi > 1 ? '<p class="s-info-gruppo-titolo">' + T('srv_cat_' + cat) + '</p>' : '';
       html += '<div class="s-info-gruppo">' +
-        '<p class="s-info-gruppo-titolo">' + T('srv_cat_' + cat) + '</p>' +
+        titolo +
         '<div class="s-info-gruppo-chips">' + gruppi[cat].map(servizioChip).join('') + '</div>' +
         '</div>';
     });

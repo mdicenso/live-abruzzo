@@ -30,7 +30,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@1,600&family=Sacramento&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/tabler-icons.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+
+<!-- Map -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- Alias Leaflet: i18n.js defines a global function L() that otherwise shadows Leaflet's global L -->
+<script>window.LEAFLET = window.L;</script>
+
 <link rel="stylesheet" href="shared.css">
 
 <style>
@@ -44,6 +50,7 @@
   border: 1.5px solid transparent; text-decoration: none; transition: border-color .2s, box-shadow .2s;
 }
 .str-row:hover { border-color: var(--rose); box-shadow: var(--shadow-md); }
+.str-row-evidenziata { border-color: var(--rose); box-shadow: var(--shadow-md); }
 .str-row.hidden { display: none; }
 .str-row-img { width: 150px; min-height: 110px; background-size: cover; background-position: center; background-color: var(--parchment); flex-shrink: 0; }
 .str-row-img.str-img-empty { background: linear-gradient(135deg, var(--olive-mid), var(--rose)); }
@@ -182,7 +189,6 @@
 
 <script src="i18n.js"></script>
 <script src="data/strutture.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <!-- ════ JAVASCRIPT ════ -->
 <script>
@@ -324,16 +330,10 @@ let mappaLeaflet = null;
 let markerLeaflet = {};
 function renderMappa(list) {
   const el = document.getElementById('str-map');
-  if (!el || typeof L === 'undefined') return;
+  if (!el || typeof LEAFLET === 'undefined') return;
   if (!mappaLeaflet) {
-    delete L.Icon.Default.prototype._getIconUrl;
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-      iconUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/marker-icon.png',
-      shadowUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/marker-shadow.png'
-    });
-    mappaLeaflet = L.map('str-map').setView([42.35, 13.9], 9); // centro Abruzzo
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    mappaLeaflet = LEAFLET.map('str-map').setView([42.35, 13.9], 9); // centro Abruzzo
+    LEAFLET.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap', maxZoom: 18
     }).addTo(mappaLeaflet);
   }
@@ -341,18 +341,28 @@ function renderMappa(list) {
   markerLeaflet = {};
   const conCoord = list.filter(s => s.lat != null && s.lng != null);
   conCoord.forEach(s => {
-    const m = L.marker([s.lat, s.lng]).addTo(mappaLeaflet)
+    const m = LEAFLET.circleMarker([s.lat, s.lng], {
+      radius: 8, fillColor: '#b5705a', color: '#fff', weight: 2, fillOpacity: .9
+    }).addTo(mappaLeaflet)
       .bindPopup(`<strong>${s.nome || ''}</strong><br><a href="strutture/${s.id}.html">${T('dr_details')} →</a>`);
+    m.on('click', () => strScrollARiga(s.id));
     markerLeaflet[s.id] = m;
   });
   if (conCoord.length) {
-    const bounds = L.latLngBounds(conCoord.map(s => [s.lat, s.lng]));
+    const bounds = LEAFLET.latLngBounds(conCoord.map(s => [s.lat, s.lng]));
     mappaLeaflet.fitBounds(bounds, { padding: [30, 30], maxZoom: 12 });
   }
 }
 function strHoverMappa(slug) {
   const m = markerLeaflet[slug];
   if (m) m.openPopup();
+}
+function strScrollARiga(slug) {
+  const riga = document.querySelector('.str-row[data-slug="' + slug + '"]');
+  if (!riga) return;
+  riga.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  riga.classList.add('str-row-evidenziata');
+  setTimeout(() => riga.classList.remove('str-row-evidenziata'), 1500);
 }
 
 /* ══ NEWSLETTER ══ */
