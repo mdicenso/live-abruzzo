@@ -29,8 +29,24 @@
 .s-badges { display:flex; gap:.45rem; flex-wrap:wrap; margin-bottom:1rem; }
 .s-gallery { display:flex; gap:.6rem; flex-wrap:wrap; margin: 1rem 0; }
 .s-gthumb { width:140px; height:100px; border-radius:10px; background-size:cover; background-position:center; background-color:var(--parchment); }
-.s-info { display:flex; gap:1.4rem; flex-wrap:wrap; margin:1.2rem 0; padding:1rem 1.2rem; background:var(--parchment); border-radius:var(--radius); }
+.s-info { display:flex; flex-direction:column; margin:1.2rem 0; padding:1rem 1.2rem; background:var(--parchment); border-radius:var(--radius); }
 .s-info-item { display:flex; align-items:center; gap:.4rem; font-size:.9rem; color:var(--ink-mid); }
+.s-subtitle { font-size:.92rem; color:var(--rose); font-weight:500; margin:-.4rem 0 1rem; }
+.s-layout { display:flex; gap:2rem; align-items:flex-start; margin-top:1rem; }
+.s-main { flex:2; min-width:0; }
+.s-sticky { flex:1; min-width:260px; }
+.s-sticky-inner { position:sticky; top:80px; max-height:calc(100vh - 100px); overflow-y:auto; background:var(--white); border:1px solid var(--parchment-dk); border-radius:var(--radius); padding:1.2rem; }
+.s-sticky-price { display:flex; flex-direction:column; gap:.5rem; margin-bottom:.8rem; }
+.s-info-price { font-size:1.05rem; font-weight:600; color:var(--olive-mid); }
+.s-info-title { font-family:var(--serif); font-size:1rem; font-weight:400; color:var(--ink); margin:0 0 .6rem; }
+.s-info-gruppo { margin-bottom:.9rem; }
+.s-info-gruppo:last-child { margin-bottom:0; }
+.s-info-gruppo-titolo { font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0 0 .35rem; }
+.s-info-gruppo-chips { display:flex; gap:.5rem; flex-wrap:wrap; }
+.s-gthumb-placeholder { width:100%; min-height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; background:linear-gradient(135deg,var(--olive-pale),var(--parchment)); color:var(--olive-mid); border-radius:10px; }
+.s-gthumb-placeholder i { font-size:2.2rem; }
+.s-gthumb-placeholder span { font-size:.78rem; font-weight:500; }
+@media(max-width:800px){ .s-layout { flex-direction:column; } .s-sticky-inner { position:static; } }
 .s-map { margin:1.2rem 0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--parchment-dk); }
 .s-map iframe { width:100%; height:280px; border:0; display:block; }
 .s-disponibilita { margin:1.2rem 0; }
@@ -58,6 +74,8 @@
 .rq-msg.ok { color:var(--olive-mid); }
 .rq-msg.err { color:#b4472e; }
 @media(max-width:600px){ .rq-riga, .rq-riga-3 { grid-template-columns:1fr; } }
+.s-sticky-inner .rq-riga, .s-sticky-inner .rq-riga-3 { grid-template-columns:1fr; }
+.s-sticky-inner .rq-form { max-width:none; }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LodgingBusiness", "name": "Sextantio Albergo Diffuso", "description": "Albergo diffuso pioniere: camere restaurate tra i vicoli in pietra di Santo Stefano di Sessanio, a lume di candela, senza tempo. Il progetto che ha fatto scuola in Italia.", "image": "https://liveabruzzo.com/img/santo-stefano-di-sessanio.jpg", "url": "https://liveabruzzo.com/strutture/sextantio-santo-stefano.html", "address": {"@type": "PostalAddress", "addressLocality": "Santo Stefano di Sessanio", "addressRegion": "Abruzzo", "addressCountry": "IT"}}</script>
 </head>
@@ -96,14 +114,24 @@
 </div>
 
 <div class="s-wrap">
+  <p class="s-subtitle" id="s-subtitle"></p>
   <div class="s-badges" id="s-badges"></div>
   <p id="s-desc"></p>
   <div class="s-gallery" id="s-gallery"></div>
-  <div class="s-info" id="s-info"></div>
-  <div class="s-disponibilita" id="s-disponibilita"></div>
-  <div class="s-map" id="s-map"></div>
-  <div id="s-book"></div>
-  <div id="s-richiesta"></div>
+  <div class="s-layout">
+    <div class="s-main">
+      <div class="s-info" id="s-info"></div>
+      <div class="s-map" id="s-map"></div>
+    </div>
+    <aside class="s-sticky">
+      <div class="s-sticky-inner">
+        <div class="s-sticky-price" id="s-sticky-price"></div>
+        <div class="s-disponibilita" id="s-disponibilita"></div>
+        <div id="s-book"></div>
+        <div id="s-richiesta"></div>
+      </div>
+    </aside>
+  </div>
 </div>
 
 <footer class="site-footer">
@@ -127,7 +155,7 @@
 <script src="../richiesta.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="../strutture-page.js"></script>
-<script>window.AW=window.AW||{};window.AW.strutture=window.AW.strutture||[];if(!window.AW.strutture.some(function(x){return x.id==="sextantio-santo-stefano";}))window.AW.strutture.push({"id": "sextantio-santo-stefano", "categoria": "dormire", "nome": "Sextantio Albergo Diffuso", "tipo_ricettivo": "albergo_diffuso", "comune": "Santo Stefano di Sessanio", "zona_geografica": "Gran Sasso — L'Aquila", "descrizione_breve": {"it": "Albergo diffuso pioniere: camere restaurate tra i vicoli in pietra di Santo Stefano di Sessanio, a lume di candela, senza tempo. Il progetto che ha fatto scuola in Italia.", "en": "The pioneering albergo diffuso: restored rooms scattered through the stone alleys of Santo Stefano di Sessanio, candlelit and timeless. The project that started it all in Italy.", "de": "Das wegweisende Albergo diffuso: restaurierte Zimmer in den steinernen Gassen von Santo Stefano di Sessanio, bei Kerzenschein und zeitlos. Das Projekt, das in Italien Schule machte.", "fr": "L'albergo diffuso pionnier : des chambres restaurées dans les ruelles de pierre de Santo Stefano di Sessanio, à la lueur des bougies, hors du temps. Le projet qui a fait école en Italie."}, "descrizione_estesa": {"it": "Nel cuore del Parco Nazionale del Gran Sasso, a 1.250 m, Sextantio ha recuperato le case del borgo medievale mantenendone intatta l'anima: pavimenti originali, coperte di lana grezza, niente televisori, luce di candela. Un soggiorno che è un ritorno alla lentezza, tra osteria, tisaneria e vedute sull'altopiano.", "en": "In the heart of the Gran Sasso National Park, at 1,250 m, Sextantio restored the houses of the medieval hamlet while keeping their soul intact: original floors, raw wool blankets, no TVs, candlelight. A stay that is a return to slowness — with an osteria, a herbal-tea room and views over the high plateau.", "de": "Im Herzen des Gran-Sasso-Nationalparks, auf 1.250 m, hat Sextantio die Häuser des mittelalterlichen Dorfes restauriert und ihre Seele bewahrt: originale Böden, grobe Wolldecken, keine Fernseher, Kerzenlicht. Ein Aufenthalt als Rückkehr zur Langsamkeit — mit Osteria, Kräuterteestube und Blick über die Hochebene.", "fr": "Au cœur du Parc National du Gran Sasso, à 1 250 m, Sextantio a restauré les maisons du hameau médiéval en préservant leur âme : sols d'origine, couvertures de laine brute, pas de télévision, lumière des bougies. Un séjour comme un retour à la lenteur — avec osteria, tisanerie et vues sur le haut plateau."}, "tags": ["borghi", "wellness", "food", "storia"], "link_booking_esterno": "https://www.sextantio.it/santostefano/abruzzo/", "foto_url": ["img/santo-stefano-di-sessanio.jpg"], "prezzo_da": null, "servizi": [], "capacita": {}, "lat": null, "lng": null, "ical_occupato": [], "ical_aggiornato_il": null, "google_place_id": "ChIJp3-QYqQsMBMRLJTE5A2FzjE"});</script>
+<script>window.AW=window.AW||{};window.AW.strutture=window.AW.strutture||[];if(!window.AW.strutture.some(function(x){return x.id==="sextantio-santo-stefano";}))window.AW.strutture.push({"id": "sextantio-santo-stefano", "categoria": "dormire", "nome": "Sextantio Albergo Diffuso", "tipo_ricettivo": "albergo_diffuso", "comune": "Santo Stefano di Sessanio", "zona_geografica": "Gran Sasso — L'Aquila", "classificazione": null, "descrizione_breve": {"it": "Albergo diffuso pioniere: camere restaurate tra i vicoli in pietra di Santo Stefano di Sessanio, a lume di candela, senza tempo. Il progetto che ha fatto scuola in Italia.", "en": "The pioneering albergo diffuso: restored rooms scattered through the stone alleys of Santo Stefano di Sessanio, candlelit and timeless. The project that started it all in Italy.", "de": "Das wegweisende Albergo diffuso: restaurierte Zimmer in den steinernen Gassen von Santo Stefano di Sessanio, bei Kerzenschein und zeitlos. Das Projekt, das in Italien Schule machte.", "fr": "L'albergo diffuso pionnier : des chambres restaurées dans les ruelles de pierre de Santo Stefano di Sessanio, à la lueur des bougies, hors du temps. Le projet qui a fait école en Italie."}, "descrizione_estesa": {"it": "Nel cuore del Parco Nazionale del Gran Sasso, a 1.250 m, Sextantio ha recuperato le case del borgo medievale mantenendone intatta l'anima: pavimenti originali, coperte di lana grezza, niente televisori, luce di candela. Un soggiorno che è un ritorno alla lentezza, tra osteria, tisaneria e vedute sull'altopiano.", "en": "In the heart of the Gran Sasso National Park, at 1,250 m, Sextantio restored the houses of the medieval hamlet while keeping their soul intact: original floors, raw wool blankets, no TVs, candlelight. A stay that is a return to slowness — with an osteria, a herbal-tea room and views over the high plateau.", "de": "Im Herzen des Gran-Sasso-Nationalparks, auf 1.250 m, hat Sextantio die Häuser des mittelalterlichen Dorfes restauriert und ihre Seele bewahrt: originale Böden, grobe Wolldecken, keine Fernseher, Kerzenlicht. Ein Aufenthalt als Rückkehr zur Langsamkeit — mit Osteria, Kräuterteestube und Blick über die Hochebene.", "fr": "Au cœur du Parc National du Gran Sasso, à 1 250 m, Sextantio a restauré les maisons du hameau médiéval en préservant leur âme : sols d'origine, couvertures de laine brute, pas de télévision, lumière des bougies. Un séjour comme un retour à la lenteur — avec osteria, tisanerie et vues sur le haut plateau."}, "tags": ["borghi", "wellness", "food", "storia"], "link_booking_esterno": "https://www.sextantio.it/santostefano/abruzzo/", "foto_url": ["img/santo-stefano-di-sessanio.jpg"], "prezzo_da": null, "servizi": [], "capacita": {}, "lat": null, "lng": null, "ical_occupato": [], "ical_aggiornato_il": null, "google_place_id": "ChIJp3-QYqQsMBMRLJTE5A2FzjE"});</script>
 <script>AWStrutturaPage.monta("sextantio-santo-stefano");</script>
 
 </body>
