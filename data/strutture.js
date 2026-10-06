@@ -33,6 +33,13 @@ window.AW.strutture = [
     "foto_url": [
       "img/santo-stefano-di-sessanio.jpg"
     ],
+    "prezzo_da": null,
+    "servizi": [],
+    "capacita": {},
+    "lat": null,
+    "lng": null,
+    "ical_occupato": [],
+    "ical_aggiornato_il": null,
     "google_place_id": "ChIJp3-QYqQsMBMRLJTE5A2FzjE"
   }
 ];
