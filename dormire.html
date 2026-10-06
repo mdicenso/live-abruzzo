@@ -30,46 +30,46 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@1,600&family=Sacramento&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/tabler-icons.min.css">
+
+<!-- Map -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- Alias Leaflet: i18n.js defines a global function L() that otherwise shadows Leaflet's global L -->
+<script>window.LEAFLET = window.L;</script>
+
 <link rel="stylesheet" href="shared.css">
 
 <style>
 /* ── Dove dormire (strutture ricettive) ── */
-.str-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.3rem; }
-.str-card {
-  background: var(--white); border-radius: var(--radius); overflow: hidden; cursor: pointer;
-  border: 1.5px solid transparent; display: flex; flex-direction: column;
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+.str-layout { display: flex; gap: 1.4rem; align-items: flex-start; }
+.str-list { flex: 1 1 54%; display: flex; flex-direction: column; gap: .9rem; min-width: 0; }
+.str-map-wrap { flex: 1 1 46%; position: sticky; top: 150px; }
+.str-map { height: 540px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--parchment-dk); background: var(--parchment); }
+.str-row {
+  display: flex; gap: 1rem; background: var(--white); border-radius: var(--radius); overflow: hidden;
+  border: 1.5px solid transparent; text-decoration: none; transition: border-color .2s, box-shadow .2s;
 }
-.str-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--rose); }
-.str-card.hidden { display: none; }
-.str-img-wrap { overflow: hidden; position: relative; }
-.str-img { width: 100%; height: 185px; background-size: cover; background-position: center; transition: transform .5s; background-color: var(--parchment); }
-.str-card:hover .str-img { transform: scale(1.06); }
-.str-img-empty { background: linear-gradient(135deg, var(--olive-mid), var(--rose)); }
-.str-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,18,10,.5), transparent 55%); }
-.str-type {
-  position: absolute; top: .7rem; left: .7rem; display: inline-flex; align-items: center; gap: .3rem;
-  background: rgba(61,74,46,.88); color: #fff; font-size: .7rem; font-weight: 500;
-  padding: .25rem .6rem; border-radius: 999px;
-}
-.str-type i { font-size: 11px; }
-.str-body { padding: 1.05rem 1.25rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
-.str-body h3 { font-family: var(--serif); font-size: 1.12rem; font-weight: 400; color: var(--ink); margin-bottom: .3rem; }
-.str-loc { font-size: .76rem; color: var(--rose); font-weight: 500; margin-bottom: .55rem; display: flex; align-items: center; gap: .3rem; }
-.str-loc i { font-size: 12px; }
-.str-body p { font-size: .82rem; color: var(--muted); line-height: 1.6; margin-bottom: .8rem; font-weight: 300; }
-.str-tags { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: .9rem; }
-.str-footer { margin-top: auto; padding-top: .85rem; border-top: 1px solid var(--parchment);
-  display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
-.str-details { font-size: .78rem; color: var(--rose); font-weight: 500; white-space: nowrap; }
-.str-meta-row { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.str-row:hover { border-color: var(--rose); box-shadow: var(--shadow-md); }
+.str-row-evidenziata { border-color: var(--rose); box-shadow: var(--shadow-md); }
+.str-row.hidden { display: none; }
+.str-row-img { width: 150px; min-height: 110px; background-size: cover; background-position: center; background-color: var(--parchment); flex-shrink: 0; }
+.str-row-img.str-img-empty { background: linear-gradient(135deg, var(--olive-mid), var(--rose)); }
+.str-row-body { padding: .8rem 1rem .8rem 0; display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
+.str-row-type { font-size: .72rem; color: var(--rose); font-weight: 500; }
+.str-row-body h3 { font-family: var(--serif); font-size: 1.02rem; font-weight: 400; color: var(--ink); margin: 0; }
+.str-classif { font-size: .76rem; color: var(--muted); }
+.str-row-meta { margin-top: auto; display: flex; align-items: center; gap: .6rem; }
 .str-price { font-size: .82rem; font-weight: 600; color: var(--olive-mid); }
-.str-cap { font-size: .78rem; color: var(--muted); }
-.str-svchip { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--parchment); color: var(--olive-mid); font-size: .78rem; }
+.str-filter-select {
+  font: inherit; font-size: .82rem; padding: .35rem .7rem; border-radius: var(--radius-xl);
+  border: 1.5px solid var(--parchment-dk); background: var(--white); color: var(--ink-mid);
+}
 .str-curated { font-size: .82rem; color: var(--muted); margin: 0 0 1.3rem; display: flex; align-items: center; gap: .45rem; }
 .str-curated i { color: var(--olive-mid); }
 .str-empty { text-align: center; color: var(--muted); padding: 3rem 1rem; font-size: .95rem; }
-@media(max-width:600px){ .str-grid { grid-template-columns: 1fr; } }
+.leaflet-popup-content { font-family: var(--sans); font-size: .85rem; }
+.leaflet-popup-content a { color: var(--rose); font-weight: 500; }
+@media(max-width:860px){ .str-layout { flex-direction: column; } .str-map-wrap { position: static; width: 100%; } .str-map { height: 320px; } }
 </style>
 <script type="application/ld+json">
 {
@@ -150,7 +150,10 @@
     </select>
   </div>
   <p class="str-curated"><i class="ti ti-rosette-discount-check" aria-hidden="true"></i> <span data-i18n="dr_curated">Selected partner accommodations</span></p>
-  <div class="str-grid" id="str-grid"></div>
+  <div class="str-layout">
+    <div class="str-list" id="str-grid"></div>
+    <div class="str-map-wrap"><div id="str-map" class="str-map"></div></div>
+  </div>
 </div>
 
 <!-- ════ NEWSLETTER ════ -->
@@ -196,7 +199,8 @@ Object.assign(T18.en, {
   dr_all:'All', dr_place:'place', dr_places:'places',
   dr_details:'Details', dr_curated:'Selected partner accommodations',
   dr_empty:'No accommodations published yet — check back soon.',
-  dr_sort_evidenza:'Featured', dr_sort_prezzo:'Price: low to high'
+  dr_sort_evidenza:'Featured', dr_sort_prezzo:'Price: low to high',
+  dr_f_tipologia:'Type', dr_f_dove:'Where'
 });
 Object.assign(T18.it, {
   dr_bc:'Dove Dormire', dr_h1:'Dove <em>Dormire</em>',
@@ -204,7 +208,8 @@ Object.assign(T18.it, {
   dr_all:'Tutti', dr_place:'struttura', dr_places:'strutture',
   dr_details:'Dettagli', dr_curated:'Strutture partner selezionate',
   dr_empty:'Nessuna struttura ancora pubblicata — torna presto.',
-  dr_sort_evidenza:'In evidenza', dr_sort_prezzo:'Prezzo: dal più basso'
+  dr_sort_evidenza:'In evidenza', dr_sort_prezzo:'Prezzo: dal più basso',
+  dr_f_tipologia:'Tipologia', dr_f_dove:'Dove'
 });
 Object.assign(T18.de, {
   dr_bc:'Übernachten', dr_h1:'<em>Übernachten</em>',
@@ -212,7 +217,8 @@ Object.assign(T18.de, {
   dr_all:'Alle', dr_place:'Unterkunft', dr_places:'Unterkünfte',
   dr_details:'Details', dr_curated:'Ausgewählte Partnerunterkünfte',
   dr_empty:'Noch keine Unterkünfte veröffentlicht — bald wieder vorbeischauen.',
-  dr_sort_evidenza:'Empfohlen', dr_sort_prezzo:'Preis: aufsteigend'
+  dr_sort_evidenza:'Empfohlen', dr_sort_prezzo:'Preis: aufsteigend',
+  dr_f_tipologia:'Typ', dr_f_dove:'Wo'
 });
 Object.assign(T18.fr, {
   dr_bc:'Où Loger', dr_h1:'Où <em>Loger</em>',
@@ -220,7 +226,8 @@ Object.assign(T18.fr, {
   dr_all:'Tous', dr_place:'hébergement', dr_places:'hébergements',
   dr_details:'Détails', dr_curated:'Hébergements partenaires sélectionnés',
   dr_empty:"Aucun hébergement publié pour l'instant — revenez bientôt.",
-  dr_sort_evidenza:'En vedette', dr_sort_prezzo:'Prix croissant'
+  dr_sort_evidenza:'En vedette', dr_sort_prezzo:'Prix croissant',
+  dr_f_tipologia:'Type', dr_f_dove:'Où'
 });
 
 /* ══ DATA ══ (data/strutture.js — GENERATO dalla CDP, contratto strutture.v1) */
@@ -235,18 +242,34 @@ function tipoLabel(t) {
 }
 function capit(s) { return (s || '').charAt(0).toUpperCase() + (s || '').slice(1); }
 
-/* ══ FILTRO per tag (generato dai dati) ══ */
+/* ══ FILTRI: tipologia, zona (dropdown) + tag (pill), tutti generati dai dati ══ */
+let activeTipo = 'all';
+let activeZona = 'all';
 let activeTag = 'all';
+
 function renderFilter() {
+  const tipi = [...new Set(strutture.map(s => s.tipo_ricettivo).filter(Boolean))].sort();
+  const zone = [...new Set(strutture.map(s => s.zona_geografica || s.comune).filter(Boolean))].sort();
   const tags = [...new Set(strutture.flatMap(s => s.tags || []))].sort();
   const bar = document.getElementById('str-filter');
-  if (!tags.length) { bar.style.display = 'none'; return; }
+  if (!tipi.length && !zone.length && !tags.length) { bar.style.display = 'none'; return; }
   bar.style.display = '';
   bar.innerHTML =
+    `<select class="str-filter-select" onchange="strFiltraTipo(this.value)">
+       <option value="all">${T('dr_f_tipologia')}</option>
+       ${tipi.map(t => `<option value="${t}" ${activeTipo === t ? 'selected' : ''}>${tipoLabel(t)}</option>`).join('')}
+     </select>
+     <select class="str-filter-select" onchange="strFiltraZona(this.value)">
+       <option value="all">${T('dr_f_dove')}</option>
+       ${zone.map(z => `<option value="${z}" ${activeZona === z ? 'selected' : ''}>${z}</option>`).join('')}
+     </select>
+     <span class="filter-divider"></span>` +
     `<button class="pill pill-parchment ${activeTag === 'all' ? 'on' : ''}" onclick="strFilter('all', this)" data-i18n="dr_all">${T('dr_all')}</button>` +
     tags.map(t => `<button class="pill pill-parchment ${activeTag === t ? 'on' : ''}" onclick="strFilter('${t}', this)"><i class="ti ti-tag" aria-hidden="true"></i> ${capit(t)}</button>`).join('') +
     `<span class="filter-count" id="str-count"></span>`;
 }
+function strFiltraTipo(v) { activeTipo = v; renderStrutture(); }
+function strFiltraZona(v) { activeZona = v; renderStrutture(); }
 function strFilter(tag, btn) {
   activeTag = tag;
   document.querySelectorAll('#str-filter .pill').forEach(b => b.classList.remove('on'));
@@ -269,52 +292,77 @@ function ordina(list) {
   });
 }
 
-const SERVIZI_ICON = { wifi: 'ti-wifi', parcheggio: 'ti-parking', piscina: 'ti-pool',
-  pet_friendly: 'ti-paw', colazione_inclusa: 'ti-coffee' };
-
-function servizioChipMini(codice) {
-  const icona = SERVIZI_ICON[codice] || 'ti-check';
-  const k = 'srv_' + codice;
-  const et = T(k) !== k ? T(k) : capit(codice.replace(/_/g, ' '));
-  return `<span class="str-svchip" title="${et}"><i class="ti ${icona}" aria-hidden="true"></i></span>`;
-}
-
 function renderStrutture() {
-  const filtrata = activeTag === 'all' ? strutture : strutture.filter(s => (s.tags || []).includes(activeTag));
+  let filtrata = strutture;
+  if (activeTipo !== 'all') filtrata = filtrata.filter(s => s.tipo_ricettivo === activeTipo);
+  if (activeZona !== 'all') filtrata = filtrata.filter(s => (s.zona_geografica || s.comune) === activeZona);
+  if (activeTag !== 'all') filtrata = filtrata.filter(s => (s.tags || []).includes(activeTag));
   const list = ordina(filtrata);
   const cnt = document.getElementById('str-count');
   if (cnt) cnt.textContent = list.length + ' ' + T(list.length !== 1 ? 'dr_places' : 'dr_place');
 
   const grid = document.getElementById('str-grid');
-  if (!list.length) { grid.innerHTML = `<p class="str-empty">${T('dr_empty')}</p>`; return; }
+  if (!list.length) { grid.innerHTML = `<p class="str-empty">${T('dr_empty')}</p>`; renderMappa([]); return; }
 
   grid.innerHTML = list.map(s => {
     const foto = (s.foto_url && s.foto_url[0]) || '';
     const imgStyle = foto ? `style="background-image:url('${foto}')"` : '';
     const imgClass = foto ? '' : ' str-img-empty';
     const loc = [s.comune, s.zona_geografica].filter(Boolean).join(' · ');
-    const desc = L(s.descrizione_breve) || '';
-    const tags = (s.tags || []).map(t => `<span class="tag">${capit(t)}</span>`).join('');
-    const cap = L(s.capacita);
     const prezzo = s.prezzo_da ? `<span class="str-price">${T('s_price_from')} ${s.prezzo_da}€${T('s_price_night')}</span>` : '';
-    const servizi = (s.servizi || []).slice(0, 3).map(servizioChipMini).join('');
+    const stelle = s.classificazione ? `<span class="str-classif">${s.classificazione}</span>` : '';
     return `
-      <a class="str-card" href="strutture/${s.id}.html">
-        <div class="str-img-wrap">
-          <div class="str-img${imgClass}" ${imgStyle}></div>
-          <div class="str-img-overlay"></div>
-          <span class="str-type"><i class="ti ti-bed" aria-hidden="true"></i> ${tipoLabel(s.tipo_ricettivo)}</span>
-        </div>
-        <div class="str-body">
+      <a class="str-row" href="strutture/${s.id}.html" data-slug="${s.id}" onmouseenter="strHoverMappa('${s.id}')">
+        <div class="str-row-img${imgClass}" ${imgStyle}></div>
+        <div class="str-row-body">
+          <span class="str-row-type">${tipoLabel(s.tipo_ricettivo)}${loc ? ' · ' + loc : ''}</span>
           <h3>${s.nome || ''}</h3>
-          ${loc ? `<div class="str-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> ${loc}</div>` : ''}
-          ${desc ? `<p>${desc}</p>` : ''}
-          <div class="str-meta-row">${prezzo}${cap ? `<span class="str-cap">${cap}</span>` : ''}${servizi}</div>
-          ${tags ? `<div class="str-tags">${tags}</div>` : ''}
-          <div class="str-footer"><span class="str-details">${T('dr_details')} →</span></div>
+          ${stelle}
+          <div class="str-row-meta">${prezzo}</div>
         </div>
       </a>`;
   }).join('');
+  renderMappa(list);
+}
+
+/* ══ MAPPA (Leaflet, nessuna chiave richiesta) ══ */
+let mappaLeaflet = null;
+let markerLeaflet = {};
+function renderMappa(list) {
+  const el = document.getElementById('str-map');
+  if (!el || typeof LEAFLET === 'undefined') return;
+  if (!mappaLeaflet) {
+    mappaLeaflet = LEAFLET.map('str-map').setView([42.35, 13.9], 9); // centro Abruzzo
+    LEAFLET.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap', maxZoom: 18
+    }).addTo(mappaLeaflet);
+  }
+  Object.values(markerLeaflet).forEach(m => mappaLeaflet.removeLayer(m));
+  markerLeaflet = {};
+  const conCoord = list.filter(s => s.lat != null && s.lng != null);
+  conCoord.forEach(s => {
+    const m = LEAFLET.circleMarker([s.lat, s.lng], {
+      radius: 8, fillColor: '#b5705a', color: '#fff', weight: 2, fillOpacity: .9
+    }).addTo(mappaLeaflet)
+      .bindPopup(`<strong>${s.nome || ''}</strong><br><a href="strutture/${s.id}.html">${T('dr_details')} →</a>`);
+    m.on('click', () => strScrollARiga(s.id));
+    markerLeaflet[s.id] = m;
+  });
+  if (conCoord.length) {
+    const bounds = LEAFLET.latLngBounds(conCoord.map(s => [s.lat, s.lng]));
+    mappaLeaflet.fitBounds(bounds, { padding: [30, 30], maxZoom: 12 });
+  }
+}
+function strHoverMappa(slug) {
+  const m = markerLeaflet[slug];
+  if (m) m.openPopup();
+}
+function strScrollARiga(slug) {
+  const riga = document.querySelector('.str-row[data-slug="' + slug + '"]');
+  if (!riga) return;
+  riga.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  riga.classList.add('str-row-evidenziata');
+  setTimeout(() => riga.classList.remove('str-row-evidenziata'), 1500);
 }
 
 /* ══ NEWSLETTER ══ */
