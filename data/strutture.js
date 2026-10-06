@@ -11,6 +11,7 @@ window.AW.strutture = [
     "tipo_ricettivo": "albergo_diffuso",
     "comune": "Santo Stefano di Sessanio",
     "zona_geografica": "Gran Sasso — L'Aquila",
+    "classificazione": null,
     "descrizione_breve": {
       "it": "Albergo diffuso pioniere: camere restaurate tra i vicoli in pietra di Santo Stefano di Sessanio, a lume di candela, senza tempo. Il progetto che ha fatto scuola in Italia.",
       "en": "The pioneering albergo diffuso: restored rooms scattered through the stone alleys of Santo Stefano di Sessanio, candlelit and timeless. The project that started it all in Italy.",
